@@ -7,7 +7,9 @@
 <title>Header</title>
 </head>
 <body>
+<div class="container">
 <hr>
-<p>&copy; Resort</p>
+<p style="text-align:left;">&copy; Resort</p>
+</div>
 </body>
 </html>

@@ -16,10 +16,13 @@
 		<a class="navbar-brand" onmouseover="menuShow(1);">찾아오기</a>
 		<a class="navbar-brand" onmouseover="menuShow(2);">주변여행지</a>
 		<a class="navbar-brand" onmouseover="menuShow(3);" >예약하기</a>
-		<a class="navbar-brand" onmouseover="menuShow(4);">리조트 소식</a>
+		<a class="navbar-brand" onmouseover="menuShow(4);">리조트 소식</a>	
 	</div>
+	<div class="navbar navbar-light">
+			<button class="btn btn-outline-success my-2 my-sm-0" onclick='href="#"'>로그인</button>
+		</div>
 </nav>
-<nav class="navbar navbar-light" style="height:100%; padding-top:0px; padding-bottom:0px; margin-bottom:20px; background-color:#e3f2fd;">
+<nav class="navbar navbar-light" style="height:100%; padding-top:0px; padding-bottom:0px; background-color:#e3f2fd;">
 	<div id="secondMenu0" class="navbar-header" style="display:none">
 		<a class="navbar-brand" href="${ pageContext.request.contextPath }/resortInfo">리조트 소개</a>
 		<a class="navbar-brand" href="${ pageContext.request.contextPath }/room0Info">VIP 룸</a>
@@ -41,7 +44,7 @@
 		<a class="navbar-brand" href="${ pageContext.request.contextPath }/adminPage">관리자 페이지</a>
 	</div>
 	<div id="secondMenu4" class="navbar-header" style="display:none;">
-		<a class="navbar-brand" href="${ pageContext.request.contextPath }/notification">공지 사항</a>
+		<a class="navbar-brand" href="${ pageContext.request.contextPath }/notificationList">공지 사항</a>
 		<a class="navbar-brand" href="${ pageContext.request.contextPath }/reviewList">이용 후기</a>
 	</div>
 </nav>

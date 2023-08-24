@@ -84,8 +84,7 @@ public class ResortController {
 			
 			for (RoomStatus roomStatus : roomStatusList) {
 				for (Reservation reservation : listofReservation) {
-					System.out.println("일자 : " + reservation.getReservationDate());
-					if (roomStatus.getReservationDate().equals(reservation.getReservationDate().subSequence(0, 10))) {
+					if (roomStatus.getReservationDate().equals(reservation.getReservationDate().substring(0, 10))) {
 						if(reservation.getReservationRoom() == 0) {
 							roomStatus.setRoom0Status(reservation.getName());
 						} else if (reservation.getReservationRoom() == 1) {
@@ -126,14 +125,6 @@ public class ResortController {
 			return "adminPage";
 		}
 		
-	// Tab 5
-		@GetMapping("/notification")
-		public String requestNotification() {
-			return "notification";
-		}
-	
-		@GetMapping("/reviewList")
-		public String requestReviewList() {
-			return "reviewList";
-		}
+
+		
 }

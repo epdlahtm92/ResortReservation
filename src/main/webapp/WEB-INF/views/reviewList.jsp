@@ -20,19 +20,21 @@
 				    <th scope="col">일자</th>
 				</tr>
 			</thead>
-	<%-- <c:forEach items="${ reservationList }" value="reservationList"> --%>
+			<c:forEach items="${ reviewList }" var="review"> 
 				<tbody>
 					<tr>
-						<td><c:out value="${ reviewId }"/></td>
-						<td><c:out value="${ reviewTitle }"/></td>
-						<td><c:out value="${ reviewUser }"/></td>
-						<td><c:out value="${ reviewDate }"/></td>
+						<td><a href="${ pageContext.request.contextPath }/review?reviewId=${ review.reviewId }"><c:out value="${ review.reviewId }"/></a></td>
+						<td><a href="${ pageContext.request.contextPath }/review?reviewId=${ review.reviewId }"><c:out value="${ review.reviewTitle }"/></a></td>
+						<td><c:out value="${ review.reviewUser }"/></td>
+						<td><c:out value="${ review.reviewDate }"/></td>
 					</tr>
 				</tbody>
-<%-- 		</c:forEach> --%>
+			</c:forEach>
 		</table>
-			
-			<%@ include file="./inc/footer.jsp" %>
+		<div class="float-right">
+			<a href="${ pageContext.request.contextPath }/newReview" class="btn btn-primary">글 쓰기</a>
 		</div>
+		<%@ include file="./inc/footer.jsp" %>
+	</div>
 </body>
 </html>

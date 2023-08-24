@@ -13,28 +13,27 @@
 		<div class="row">
 			<div class="col -md-4">
 				<h3>
-					<c:out value="${ notificationById.notificationTitle }" />
+					<c:out value="${ reviewById.reviewTitle }" />
 				</h3>
 				<p>
 					<b>작성자 : </b>
-					<c:out value="관리자" />
+					<c:out value="${reviewById.reviewUser }" />
 				<p>
 					<b>날짜 : </b>
-					<c:out value="${ notificationById.notificationDate }" />
+					<c:out value="${ reviewById.reviewDate }" />
 				<p>
 					<b>내용 : </b> <br />
+					<c:out value="${ reviewById.reviewContent }" />
 					<c:out value="${ notificationById.notificationContent }" />
 				<div class="float-right">
-					<a href="${ pageContext.request.contextPath }"
-						class="btn btn-warning">수정하기</a>
-					<a href="${ pageContext.request.contextPath }"
+					<a href="${ pageContext.request.contextPath }/newReview"
+						class="btn btn-warning">수정하기</a> <a
+						href="${ pageContext.request.contextPath }/newReview"
 						class="btn btn-danger">지우기</a>
 				</div>
 			</div>
 		</div>
+		<%@ include file="./inc/footer.jsp"%>
 	</div>
-
-
-	<%@ include file="./inc/footer.jsp"%>
 </body>
 </html>

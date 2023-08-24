@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,17 +8,25 @@
 </head>
 <body>
 
-	<%@ include file="./inc/header.jsp" %>
-	
-	<div class="container">
+	<%@ include file="./inc/header.jsp"%>
+
+	<div class="container" style="margin-bottom:150px;">
 		<div class="row">
-			<div class="col -md-4" style="text-align:center;">
+			<div class="col -md-4" style="text-align: center;">
 				<h3>VIP 룸</h3>
-				<img style="width:100%;" src="${ pageContext.request.contextPath }/resources/imageFiles/room0.jpg" alt="VIP 룸 이미지">
+				<p>vip 룸 설명
+				<p>vip 룸 설명
+				<p>vip 룸 설명
+				<p>vip 룸 설명
+				<p>vip 룸 설명
+			</div>
+			<div class="col -md-8">
+				<img style="position: absolute; top: 0; left: 0; width:100%;"
+					src="${ pageContext.request.contextPath }/resources/imageFiles/room0.jpg"
+					alt="사진 없음" />
 			</div>
 		</div>
 	</div>
-	
-	<%@ include file="./inc/footer.jsp" %>
+	<%@ include file="./inc/footer.jsp"%>
 </body>
 </html>

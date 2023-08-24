@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -8,10 +8,11 @@
 <title>예약 하기</title>
 </head>
 <body>
-	<%@ include file="./inc/header.jsp" %>
-	
+	<%@ include file="./inc/header.jsp"%>
+
 	<div class="container">
-		<form:form modelAttribute="newReservation" class="form-horizontal" method="post">
+		<form:form modelAttribute="newReservation" class="form-horizontal"
+			method="post">
 			<fieldset>
 				<legend>${ newReservationTitle }</legend>
 				<div class="form-group-row">
@@ -44,15 +45,15 @@
 						<form:input path="userComment" class="form-control" />
 					</div>
 				</div>
-				<div class="float-right">
-					<div class="col -sm-offset-2 col -sm-10" style="padding-right:0px;">
-						<input type="reset" class="btn btn-warning" value="다시쓰기" />
-						<input type="submit" class="btn btn-primary" value="확인" /> 
+				<div class="form-group-row" style="align:right; margin-top:20px;">
+					<div class="col -sm-offset-2 col -sm-10" style="padding-right: 0px;">
+						<input type="reset" class="btn btn-warning" value="다시쓰기" /> 
+						<input type="submit" class="btn btn-primary" value="확인" />
 					</div>
 				</div>
 			</fieldset>
 		</form:form>
-		<%@ include file="./inc/footer.jsp" %>
+		<%@ include file="./inc/footer.jsp"%>
 	</div>
 </body>
 </html>
