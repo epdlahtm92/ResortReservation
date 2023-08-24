@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.resort.mapper.ReservationListMapper">
+	
+	<!-- Create  -->
+		<insert id="createOneReservation" parameterType="com.resort.domain.Reservation">
+			insert into reservationlist (userid, name, reservationroom, reservationdate, address, phonenumber, payer, usercomment, requestdate) values (reservationlist_seq.nextval, '${Reservation.name}', '${Reservation.reservationRoom}', '${Reservation.reservationDate}', '${Reservation.address}', '${Reservation.phoneNumber}', '${Reservation.payer}', '${Reservation.userComment}', sysdate)
+		</insert>
+	
+	<!--  Read -->
+		<select id="readAllReservation" resultType="com.resort.domain.Reservation">
+			select * from reservationlist
+		</select>
+</mapper>
