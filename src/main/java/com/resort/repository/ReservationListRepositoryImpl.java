@@ -43,9 +43,17 @@ public class ReservationListRepositoryImpl implements ReservationListRepository 
 			return oneReservation;
 		}
 		
+	// Update
+		@Override
+		public void updateOneReservation(Reservation reservation) {
+			reservationListMapper.updateOneReservation(reservation);
+		}
+		
 	// Delete
 		@Override
 		public void deleteOneReservation(int reservationId) {
 			reservationListMapper.deleteOneReservation(reservationId);
 		}
+
+		
 }

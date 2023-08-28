@@ -3,15 +3,24 @@
 <mapper namespace="com.resort.mapper.NotificationMapper">
 	
 	<!-- Create -->
-		<insert id="createNewNotification" parameterType="com.resort.domain.Notification">
-			insert into notification (notificationid, notificationtitle, notificationcontent) values (notification_seq.nextval, '${Notification.notificationTitle}', '${Notification.notificationContent}')
+		<insert id="createNewNotification" parameterType="com.resort.domain.Notification" >
+			insert into notification (notificationid, notificationtitle, notificationcontent, notificationimagepath) values (notification_seq.nextval, '${Notification.notificationTitle}', '${Notification.notificationContent}', '${Notification.notificationImagePath}')
+		
+			<selectKey keyProperty="notificationId" resultType="Integer" order="AFTER">
+				select notification_seq.currval from dual
+			</selectKey>
+			
 		</insert>
 		
 	<!-- Read -->
 		<select id="readAllNotification" resultType="com.resort.domain.Notification">
 			select * from notification order by notificationid desc
 		</select>
+		
 	<!-- Update -->
+		<update id="updateOneNotification" parameterType="com.resort.domain.Notification">
+			update notification set notificationtitle='${Notification.notificationTitle}', notificationcontent='${Notification.notificationContent}', notificationdate=sysdate where notificationid=${Notification.notificationId}
+		</update>
 	
 	<!-- Delete -->
 		<delete id="deleteOneNotification" parameterType="Integer">

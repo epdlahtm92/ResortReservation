@@ -84,7 +84,7 @@ public class ResortController {
 			
 			for (RoomStatus roomStatus : roomStatusList) {
 				for (Reservation reservation : listofReservation) {
-					if (roomStatus.getReservationDate().equals(reservation.getReservationDate().substring(0, 10))) {
+					if (roomStatus.getReservationDate().equals(reservation.getReservationDate())) {
 						if(reservation.getReservationRoom() == 0) {
 							roomStatus.setRoom0Status(reservation.getName());
 						} else if (reservation.getReservationRoom() == 1) {

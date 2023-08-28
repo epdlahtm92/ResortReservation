@@ -4,7 +4,7 @@
 	
 	<!-- Create -->
 		<insert id="createOneReview" parameterType="com.resort.domain.Review">
-			insert into review (reviewid, reviewtitle, reviewcontent, reviewuser) values (review_seq.nextval, '${Review.reviewTitle}', '${Review.reviewContent}', '${Review.reviewUser}')		
+			insert into review (reviewid, reviewtitle, reviewcontent, reviewuser, reviewimagepath) values (review_seq.nextval, '${Review.reviewTitle}', '${Review.reviewContent}', '${Review.reviewUser}', '${Review.reviewImagePath}')		
 		</insert>
 	
 	<!-- Read -->
@@ -13,7 +13,10 @@
 		</select>
 	
 	<!-- Update -->
-	
+		<update id="updateOneReview" parameterType="com.resort.domain.Review">
+			update review set reviewtitle='${Review.reviewTitle}', reviewcontent='${Review.reviewContent}', reviewdate=sysdate where reviewid=${Review.reviewId}
+		</update>
+		
 	<!-- Delete -->
 		<delete id="deleteOneReview" parameterType="Integer">
 			delete from review where reviewid = ${reviewId}

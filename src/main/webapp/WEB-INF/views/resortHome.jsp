@@ -14,6 +14,7 @@
 	</div>
 	<div class="container" style="text-align:center">
 		<h3>Welcome to KOPO Resort!</h3>
+		<h5>${ connectionLog }</h5>
 	</div>
 	
 	<%@ include file="./inc/footer.jsp" %>

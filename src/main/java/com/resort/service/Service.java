@@ -19,20 +19,24 @@ public interface Service {
 			Reservation readOneReservation(int reservationRoom, String reservationDate);
 		
 		// Update
-		
+			void updateOneReservation(Reservation reservation);
+			
 		// Delete
 			void deleteOneReservation(int reservationId);
 	}
 	
 	interface NotificationService {
 		// Create
-			void createNewNotification(Notification notification); 
+			int createNewNotification(Notification notification); 
 		
 		// Read
 			List<Notification> readAllNotification();
 			
 			Notification readOneNotificationById(int notificationId);
 		
+		// Update
+			void updateOneNotification(Notification notification);
+			
 		// Delete
 			void deleteOneNotification(int notificationId);
 	}
@@ -43,8 +47,11 @@ public interface Service {
 		
 		// Read
 			List<Review> readAllReview();
+			
+			Review readOneReviewById(int reviewId);
 		
 		// Update
+			void updateOneReview(Review review);
 			
 		// Delete
 			void deleteOneReview(int reviewId);

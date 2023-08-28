@@ -11,12 +11,13 @@ import com.resort.domain.Notification;
 public interface NotificationMapper {
 	
 	// Create
-		void createNewNotification(@Param("Notification") Notification notification);
+		public int createNewNotification(@Param("Notification") Notification notification);
 	
 	// Read
 		public List<Notification> readAllNotification();
 		
 	// Update
+		void updateOneNotification(@Param("Notification") Notification notification);
 		
 	// Delete
 		void deleteOneNotification(@Param("notificationId") int notificationId);

@@ -17,8 +17,8 @@ public class NotificationServiceImpl implements NotificationService {
 	
 	// Create
 		@Override
-		public void createNewNotification(Notification notification) {
-			notificationRepository.createNewNotification(notification);
+		public int createNewNotification(Notification notification) {
+			return notificationRepository.createNewNotification(notification);
 		}
 		
 	// Read
@@ -32,10 +32,18 @@ public class NotificationServiceImpl implements NotificationService {
 			return notificationRepository.readOneNotificationById(notificationId);
 		}
 	
+	// Update
+		@Override
+		public void updateOneNotification(Notification notification) {
+			notificationRepository.updateOneNotification(notification);
+		}
+		
 	// Delete
 		@Override
 		public void deleteOneNotification(int notificationId) {
 			notificationRepository.deleteOneNotification(notificationId);
 		}
+
+		
 
 }

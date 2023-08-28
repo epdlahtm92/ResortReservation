@@ -16,6 +16,7 @@ public interface ReviewMapper {
 		List<Review>readAllReview();
 	
 	// Update
+		void updateOneReview(@Param("Review") Review review);
 		
 	// Delete
 		void deleteOneReview(@Param("reviewId") int reviewId);

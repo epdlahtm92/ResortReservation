@@ -1,34 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+function trimSpace(target) {
+	target.value = target.value.trim();
+}
+
+function trimSpaceStart(target) {
+	target.value = target.value.trimStart();
+}
+</script>
 <meta charset="UTF-8">
-<title>공지사항 작성</title>
+<title>이용후기 작성</title>
 </head>
 <body>
 	<%@ include file="./inc/header.jsp" %>
+	<c:if test="${fileTypeAlert eq 'true'}">
+		<script>
+			window.alert('이미지 파일만 업로드 하세요');
+		</script>
+	</c:if>
 	<div class="container">
-		<form:form modelAttribute="newReview" class="form-horizontal" method="post">
+		<form:form modelAttribute="newReview" class="form-horizontal" method="post" enctype="multipart/form-data">
 			<fieldset>
-				<legend>${ newNotificationTitle}</legend>
+			<legend>이용후기 작성하기</legend>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">제목</label>
 					<div class="col -sm-3">
-						<form:input path="reviewTitle" class="form-control" required="true" />
+						<form:input path="reviewTitle" class="form-control" oninput="trimSpaceStart(this)" required="true" />
 					</div>
 				</div>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">내용</label>
 					<div class="col -sm-3">
-						<form:textarea style="height:500px;" path="reviewContent" class="form-control" required="true" />
+						<form:textarea style="height:500px;" path="reviewContent" class="form-control" oninput="trimSpaceStart(this)" required="true" />
 					</div>
 				</div>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">게시자</label>
 					<div class="col -sm-3">
-						<form:input path="reviewUser" class="form-control" required="true" />
+						<form:input path="reviewUser" class="form-control" oninput="trimSpace(this)" required="true" />
+					</div>
+				</div>
+				<div class="form-group-row">
+					<label class="col-sm-2 control-label">사진</label>
+					<div class="col -sm-3">
+						<form:input type="file" path="reviewImageFile" accept="image/gif, image/jpeg, image/png"/>
 					</div>
 				</div>
 				<div class="float-right" style="margin-top:25px;">

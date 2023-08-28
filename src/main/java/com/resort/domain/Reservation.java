@@ -80,6 +80,4 @@ public class Reservation {
 		this.reservationStatus = reservationStatus;
 	}
 	
-	
-	
 }

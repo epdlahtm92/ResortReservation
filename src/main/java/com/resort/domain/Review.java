@@ -1,5 +1,7 @@
 package com.resort.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Review {
 	
 	private int reviewId;
@@ -7,7 +9,15 @@ public class Review {
 	private String reviewContent;
 	private String reviewUser;
 	private String reviewDate;
-
+	private MultipartFile reviewImageFile;
+	private String reviewImagePath;
+	
+	public String getReviewImagePath() {
+		return reviewImagePath;
+	}
+	public void setReviewImagePath(String reviewImagePath) {
+		this.reviewImagePath = reviewImagePath;
+	}
 	public Review() {
 		super();
 
@@ -35,6 +45,12 @@ public class Review {
 	}
 	public void setReviewUser(String reviewUser) {
 		this.reviewUser = reviewUser;
+	}
+	public MultipartFile getReviewImageFile() {
+		return reviewImageFile;
+	}
+	public void setReviewImageFile(MultipartFile reviewImageFile) {
+		this.reviewImageFile = reviewImageFile;
 	}
 	public String getReviewDate() {
 		return reviewDate;

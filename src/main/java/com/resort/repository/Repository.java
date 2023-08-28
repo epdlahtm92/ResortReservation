@@ -19,6 +19,7 @@ public interface Repository {
 			Reservation readOneReservation(int reservationRoom, String reservationDate);
 		
 		// Update
+			void updateOneReservation(Reservation reservation);
 			
 		// Delete
 			void deleteOneReservation(int reservationId);
@@ -26,7 +27,7 @@ public interface Repository {
 	
 	interface NotificationRepository {
 		// Create
-			void createNewNotification(Notification notification);
+			int createNewNotification(Notification notification);
 			
 		// Read
 			List<Notification> readAllNotification();
@@ -34,6 +35,7 @@ public interface Repository {
 			Notification readOneNotificationById(int notificationId);
 		
 		// Update
+			void updateOneNotification(Notification notification);
 		
 		// Delete
 			void deleteOneNotification(int notificationId);
@@ -46,8 +48,11 @@ public interface Repository {
 		
 		// Read
 			List<Review>readAllReview();
+			
+			Review readOneReviewById(int reviewId);
 		
 		// Update
+			void updateOneReview(Review review);
 			
 		// Delete
 			void deleteOneReview(int reviewId);

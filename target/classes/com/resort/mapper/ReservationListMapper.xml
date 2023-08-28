@@ -4,7 +4,7 @@
 	
 	<!-- Create  -->
 		<insert id="createOneReservation" parameterType="com.resort.domain.Reservation">
-			insert into reservationlist (reservationid, name, reservationroom, reservationdate, address, phonenumber, payer, usercomment, requestdate) values (reservationlist_seq.nextval, '${Reservation.name}', '${Reservation.reservationRoom}', '${Reservation.reservationDate}', '${Reservation.address}', '${Reservation.phoneNumber}', '${Reservation.payer}', '${Reservation.userComment}', sysdate)
+			insert into reservationlist (reservationid, name, reservationroom, reservationdate, address, phonenumber, payer, usercomment) values (reservationlist_seq.nextval, '${Reservation.name}', '${Reservation.reservationRoom}', '${Reservation.reservationDate}', '${Reservation.address}', '${Reservation.phoneNumber}', '${Reservation.payer}', '${Reservation.userComment}')
 		</insert>
 	
 	<!--  Read -->
@@ -13,7 +13,9 @@
 		</select>
 		
 	<!-- Update  -->
-	
+		<update id="updateOneReservation" parameterType="com.resort.domain.Reservation">
+			update reservationlist set name='${Reservation.name}', address='${Reservation.address}', phonenumber='${Reservation.phoneNumber}', payer='${Reservation.payer}', usercomment='${Reservation.userComment}', requestdate=sysdate where reservationroom=${Reservation.reservationRoom} and reservationdate='${Reservation.reservationDate}'
+		</update>
 	<!-- Delete -->
 		<delete id="deleteOneReservation" parameterType="Integer">
 			delete from reservationlist where reservationid = ${reservationId}

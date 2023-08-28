@@ -33,11 +33,17 @@ public class ReservationListServiceImpl implements ReservationListService {
 		}
 	
 	// Update
+		@Override
+		public void updateOneReservation(Reservation reservation) {
+			reservationRepository.updateOneReservation(reservation);
+		}
 		
 	// Delete
 		@Override
 		public void deleteOneReservation(int reservationId) {
 			reservationRepository.deleteOneReservation(reservationId);
 		}
+
+		
 
 }

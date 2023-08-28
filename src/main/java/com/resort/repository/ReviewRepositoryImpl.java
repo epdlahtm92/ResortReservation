@@ -29,14 +29,31 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 			listofReivew = reviewMapper.readAllReview();
 			return listofReivew;
 		}
+		
+		@Override
+		public Review readOneReviewById(int reviewId) {
+			Review reviewById = null;
+			listofReivew = reviewMapper.readAllReview();
+			if (listofReivew != null) {
+				for (Review review : listofReivew) {
+					if (review.getReviewId() == reviewId) {
+						reviewById = review;
+					}
+				}
+			}
+			return reviewById;
+		}
+
 	// Update
+		@Override
+		public void updateOneReview(Review review) {
+			reviewMapper.updateOneReview(review);
+		}
 		
 	// Delete
 		@Override
 		public void deleteOneReview(int reviewId) {
 			reviewMapper.deleteOneReview(reviewId);
 		}
-
-		
 
 }

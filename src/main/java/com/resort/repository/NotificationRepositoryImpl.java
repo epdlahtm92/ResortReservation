@@ -19,8 +19,11 @@ public class NotificationRepositoryImpl implements NotificationRepository {
 	
 	// Create
 		@Override
-		public void createNewNotification(Notification notification) {
-			notificationMapper.createNewNotification(notification);
+		public int createNewNotification(Notification notification) {
+			System.out.println("::" + notificationMapper.createNewNotification(notification));
+			int newNotificationId = notification.getNotificationId();
+			System.out.println("++++" + newNotificationId);
+			return newNotificationId;
 		}
 		
 	// Read
@@ -43,11 +46,19 @@ public class NotificationRepositoryImpl implements NotificationRepository {
 			return notificationById;
 		}
 	
+	// Update
+		@Override
+		public void updateOneNotification(Notification notification) {
+			notificationMapper.updateOneNotification(notification);
+		}
+	
 	// Delete
 		@Override
 		public void deleteOneNotification(int notificationId) {
 			notificationMapper.deleteOneNotification(notificationId);
 		}
+
+		
 
 		
 

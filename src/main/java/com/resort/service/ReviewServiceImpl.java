@@ -28,14 +28,21 @@ public class ReviewServiceImpl implements ReviewService {
 			return reviewRepository.readAllReview();
 		}
 
+		@Override
+		public Review readOneReviewById(int reviewId) {
+			return reviewRepository.readOneReviewById(reviewId);
+		}
+
 	// Update
+		@Override
+		public void updateOneReview(Review review) {	
+			reviewRepository.updateOneReview(review);
+		}
 		
 	// Delete
 		@Override
 		public void deleteOneReview(int reviewId) {
 			reviewRepository.deleteOneReview(reviewId);
 		}
-
-		
 
 }

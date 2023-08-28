@@ -39,7 +39,7 @@
 					<b>남기실 말 : </b>
 					<c:out value="${reservation.userComment }" />
 				<div class="float-right">
-					<a href="${ pageContext.request.contextPath }"
+					<a href="${ pageContext.request.contextPath }/updateOneReservation?reservationRoom=${ reservation.reservationRoom }&reservationDate=${ reservation.reservationDate }"
 						class="btn btn-warning">예약 정보 수정</a>
 					<a href="${ pageContext.request.contextPath }/deleteOneReservation?reservationId=${ reservation.reservationId }"
 						class="btn btn-danger">예약 취소</a>

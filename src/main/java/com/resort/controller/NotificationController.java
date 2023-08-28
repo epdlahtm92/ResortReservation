@@ -1,6 +1,8 @@
 package com.resort.controller;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,9 +30,31 @@ public class NotificationController {
 		}
 		
 		@PostMapping("/newNotification") 
-		public String submitNewNotification(@ModelAttribute("newNotification") Notification notification) {
+		public String submitNewNotification(@ModelAttribute("newNotification") Notification notification, Model model) {
+			
+			if (notification.getNotificationImageFile().getContentType().contains("image/") && notification.getNotificationImageFile() != null) {
+				String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
+				String notificationTitle = notification.getNotificationTitle().replaceAll(" ", "");
+				String originalFileName = notification.getNotificationImageFile().getOriginalFilename().replaceAll(" ", "");
+				String imageFileName = uuid + "_" + notificationTitle + "_" + originalFileName;
+				
+				notification.setNotificationImagePath(imageFileName);
+				try {
+					notification.getNotificationImageFile().transferTo(new File("C:\\03StringWorkspace\\ResortReservation\\src\\main\\webapp\\resources\\imageFiles\\" + imageFileName));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (notification.getNotificationImageFile() == null) {
+				model.addAttribute("fileTypeAlert", "false");
+			} else {
+				model.addAttribute("fileTypeAlert", "true");
+				return "newNotification";
+			}
+			
 			notificationSerivce.createNewNotification(notification);
-			return "redirect:/notificationList";
+			int newNotificationId = notification.getNotificationId();
+			System.out.println("==" + newNotificationId);
+			return "redirect:/notification?notificationId=" + newNotificationId;
 		}
 	
 	// Read
@@ -53,6 +77,19 @@ public class NotificationController {
 		}
 		
 	// Update
+		@GetMapping("/updateOneNotification")
+		public String requestUpdateNotification(@RequestParam("notificationId") int notificationId, Model model) {
+			Notification updateNotification = notificationSerivce.readOneNotificationById(notificationId);
+			model.addAttribute("updateNotification", updateNotification);
+			return "updateNotification";
+		}
+		
+		@PostMapping("/updateOneNotification")
+		public String submitUpdateNotification(@ModelAttribute("updateNotification") Notification notification, Model model) {
+			notificationSerivce.updateOneNotification(notification);
+			int notificationId = notification.getNotificationId();
+			return "redirect:/notification?notificationId=" + notificationId;
+		}
 	
 	// Delete
 		@GetMapping("/deleteOneNotification")
