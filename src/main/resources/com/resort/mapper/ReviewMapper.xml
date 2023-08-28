@@ -9,7 +9,13 @@
 	
 	<!-- Read -->
 		<select id="readAllReview" resultType="com.resort.domain.Review">
-			select * from review order by reviewid
+			select * from review order by reviewid desc
 		</select>
 	
+	<!-- Update -->
+	
+	<!-- Delete -->
+		<delete id="deleteOneReview" parameterType="Integer">
+			delete from review where reviewid = ${reviewId}
+		</delete>
 </mapper>

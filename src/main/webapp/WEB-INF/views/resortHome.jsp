@@ -10,10 +10,10 @@
 	<%@ include file="./inc/header.jsp" %>
 	
 	<div class="jumbotron" style="padding:0px;">
-			<img style="width: 100%" src="${ pageContext.request.contextPath }/resources/imageFiles/coastal_town-wallpaper-1920x1080.jpg" alt="">
+			<img style="width: 100%" src="${ pageContext.request.contextPath }/resources/imageFiles/resort.jpg" alt="">
 	</div>
 	<div class="container" style="text-align:center">
-		<h3>Welcome!</h3>
+		<h3>Welcome to KOPO Resort!</h3>
 	</div>
 	
 	<%@ include file="./inc/footer.jsp" %>

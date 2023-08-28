@@ -9,10 +9,13 @@
 		
 	<!-- Read -->
 		<select id="readAllNotification" resultType="com.resort.domain.Notification">
-			select * from notification
+			select * from notification order by notificationid desc
 		</select>
 	<!-- Update -->
 	
 	<!-- Delete -->
+		<delete id="deleteOneNotification" parameterType="Integer">
+			delete from notification where notificationid = ${notificationId}
+		</delete>
 	
 </mapper>

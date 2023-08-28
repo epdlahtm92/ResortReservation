@@ -30,4 +30,22 @@ public class ReservationListRepositoryImpl implements ReservationListRepository 
 			listofReservation = reservationListMapper.readAllReservation();
 			return listofReservation;
 		}
+
+		@Override
+		public Reservation readOneReservation(int reservationRoom, String reservationDate) {
+			Reservation oneReservation = null;
+			listofReservation = reservationListMapper.readAllReservation();
+			for (Reservation reservation : listofReservation) {
+				if (reservation.getReservationRoom() == reservationRoom && reservation.getReservationDate().equals(reservationDate) ) {
+					oneReservation = reservation;
+				}
+			}
+			return oneReservation;
+		}
+		
+	// Delete
+		@Override
+		public void deleteOneReservation(int reservationId) {
+			reservationListMapper.deleteOneReservation(reservationId);
+		}
 }

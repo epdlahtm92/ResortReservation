@@ -42,6 +42,12 @@ public class NotificationRepositoryImpl implements NotificationRepository {
 
 			return notificationById;
 		}
+	
+	// Delete
+		@Override
+		public void deleteOneNotification(int notificationId) {
+			notificationMapper.deleteOneNotification(notificationId);
+		}
 
 		
 

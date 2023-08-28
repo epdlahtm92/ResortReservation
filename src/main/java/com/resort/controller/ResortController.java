@@ -102,6 +102,13 @@ public class ResortController {
 			
 			return "reservationList";
 		}
+		@GetMapping("/reservation")
+		public String requestOneReservation(@RequestParam("reservationRoom") int reservationRoom, @RequestParam("reservationDate") String reservationDate, Model model) {
+			Reservation reservation = reservationService.readOneReservation(reservationRoom, reservationDate);
+			model.addAttribute("reservation", reservation);
+			return "reservation";
+		}
+		
 		
 		@GetMapping("/newReservation")
 		public String requestNewReservation(@RequestParam("reservationDate") String reservationDate, @RequestParam("reservationRoom") int reservationRoom, Model model) {
@@ -119,6 +126,13 @@ public class ResortController {
 			reservationService.createOneReservation(reservation);
 			return "redirect:/reservationList";
 		}
+		
+		@GetMapping("/deleteOneReservation")
+		public String requestDeleteOneReservation(@RequestParam("reservationId") int reservationId) {
+			reservationService.deleteOneReservation(reservationId);
+			return "redirect:/reservationList";
+		}
+		
 		
 		@GetMapping("/adminPage")
 		public String requestAdminPage() {

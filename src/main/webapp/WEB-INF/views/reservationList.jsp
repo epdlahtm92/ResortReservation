@@ -27,23 +27,25 @@
 						<td><c:out value="${ roomStatus.reservationDate }"/></td>
 						<c:choose>
 							<c:when test="${ roomStatus.room0Status ne '0' }">
-								<td><c:out value="${ roomStatus.room0Status }"/></td>
-								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=1"><c:out value="예약 가능" /></a></td>
-								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=2"><c:out value="예약 가능" /></a></td>
-							</c:when>
-							<c:when test="${ roomStatus.room1Status ne '0' }">
-								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=0"><c:out value="예약 가능" /></a></td>
-								<td><c:out value="${ roomStatus.room1Status }"/></td>
-								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=2"><c:out value="예약 가능" /></a></td>
-							</c:when>
-							<c:when test="${ roomStatus.room2Status ne '0' }">
-								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=0"><c:out value="예약 가능" /></a></td>
-								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=1"><c:out value="예약 가능" /></a></td>
-								<td><c:out value="${ roomStatus.room2Status }"/></td>
+								<td><a href="${pageContext.request.contextPath }/reservation?reservationRoom=0&reservationDate=${ roomStatus.reservationDate }"><c:out value="${ roomStatus.room0Status }"/></a></td>
 							</c:when>
 							<c:otherwise>
 								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=0"><c:out value="예약 가능" /></a></td>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${ roomStatus.room1Status ne '0' }">
+								<td><a href="${pageContext.request.contextPath }/reservation?reservationRoom=1&reservationDate=${ roomStatus.reservationDate }"><c:out value="${ roomStatus.room1Status }"/></a></td>
+							</c:when>
+							<c:otherwise>
 								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=1"><c:out value="예약 가능" /></a></td>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${ roomStatus.room2Status ne '0' }">
+								<td><a href="${pageContext.request.contextPath }/reservation?reservationRoom=2&reservationDate=${ roomStatus.reservationDate }"><c:out value="${ roomStatus.room2Status }"/></a></td>
+							</c:when>
+							<c:otherwise>
 								<td><a href="${pageContext.request.contextPath }/newReservation?reservationDate=${ roomStatus.reservationDate }&reservationRoom=2"><c:out value="예약 가능" /></a></td>
 							</c:otherwise>
 						</c:choose>

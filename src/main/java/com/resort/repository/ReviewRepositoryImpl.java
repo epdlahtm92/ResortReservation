@@ -29,6 +29,13 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 			listofReivew = reviewMapper.readAllReview();
 			return listofReivew;
 		}
+	// Update
+		
+	// Delete
+		@Override
+		public void deleteOneReview(int reviewId) {
+			reviewMapper.deleteOneReview(reviewId);
+		}
 
 		
 

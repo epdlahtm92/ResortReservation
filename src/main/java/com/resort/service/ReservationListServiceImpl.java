@@ -27,4 +27,17 @@ public class ReservationListServiceImpl implements ReservationListService {
 			return reservationRepository.readAllReservation();
 		}
 
+		@Override
+		public Reservation readOneReservation(int reservationRoom, String reservationDate) {
+			return reservationRepository.readOneReservation(reservationRoom, reservationDate);
+		}
+	
+	// Update
+		
+	// Delete
+		@Override
+		public void deleteOneReservation(int reservationId) {
+			reservationRepository.deleteOneReservation(reservationId);
+		}
+
 }

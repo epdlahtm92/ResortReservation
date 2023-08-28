@@ -55,4 +55,9 @@ public class NotificationController {
 	// Update
 	
 	// Delete
+		@GetMapping("/deleteOneNotification")
+		public String requestDeleteNotification(@RequestParam("notificationId") int notificationId) {
+			notificationSerivce.deleteOneNotification(notificationId);
+			return "redirect:/notificationList";
+		}
 }

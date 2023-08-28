@@ -2,7 +2,7 @@ package com.resort.domain;
 
 public class Reservation {
 	
-	private int userId;
+	private int reservationId;
 	private String name;
 	private int reservationRoom;
 	private String reservationDate;
@@ -16,12 +16,15 @@ public class Reservation {
 	public Reservation() {
 		super();
 	}
-	public int getUserId() {
-		return userId;
+	
+	public int getReservationId() {
+		return reservationId;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+
+	public void setReservationId(int reservationId) {
+		this.reservationId = reservationId;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -38,7 +41,7 @@ public class Reservation {
 		return reservationDate;
 	}
 	public void setReservationDate(String reservationDate) {
-		this.reservationDate = reservationDate;
+		this.reservationDate = reservationDate.substring(0, 10);
 	}
 	public String getAddress() {
 		return address;

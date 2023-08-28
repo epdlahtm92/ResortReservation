@@ -7,8 +7,8 @@
 <title>Header</title>
 </head>
 <body>
-<div class="container">
-<hr>
+<div class="row" style="margin-top:75px;">
+	<hr style="width:100%;">
 <p style="text-align:left;">&copy; Resort</p>
 </div>
 </body>

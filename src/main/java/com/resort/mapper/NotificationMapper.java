@@ -15,4 +15,9 @@ public interface NotificationMapper {
 	
 	// Read
 		public List<Notification> readAllNotification();
+		
+	// Update
+		
+	// Delete
+		void deleteOneNotification(@Param("notificationId") int notificationId);
 }

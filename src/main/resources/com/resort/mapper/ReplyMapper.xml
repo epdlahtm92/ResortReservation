@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.resort.mapper.ReplyMapper">
+	<!-- Create -->
+		<insert id="createOneReply" parameterType="com.resort.domain.Reply">
+			insert into reply (rootid, replyid, replyCategory, replyuser, replycontent) values (${Reply.rootId}, reply_seq.nextval, '${Reply.replyCategory}', '${Reply.replyUser}', '${Reply.replyContent}')
+		</insert>
+	<!-- Read -->
+		<select id="readAllReply" parameterType="Integer" resultType="com.resort.domain.Reply">
+			select * from reply where rootid = ${rootId} order by replyid desc
+		</select>
+		
+	<!-- Delete -->
+		<delete id="deleteOneReply" parameterType="Integer">
+			delete from reply where replyid = ${replyId}
+		</delete>
+	
+		<delete id="deleteAllReply" parameterType="Integer">
+			delete from reply where rootid = ${rootId}
+		</delete>
+</mapper>

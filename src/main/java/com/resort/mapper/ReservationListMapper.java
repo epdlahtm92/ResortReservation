@@ -15,4 +15,9 @@ public interface ReservationListMapper {
 		
 	// Read
 		List<Reservation> readAllReservation();
+	
+	// Update
+		
+	// Delete
+		void deleteOneReservation(@Param("reservationId") int reservationId);
 }

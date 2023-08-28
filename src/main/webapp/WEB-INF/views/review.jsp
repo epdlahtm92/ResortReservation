@@ -27,12 +27,12 @@
 					<c:out value="${ notificationById.notificationContent }" />
 				<div class="float-right">
 					<a href="${ pageContext.request.contextPath }/newReview"
-						class="btn btn-warning">수정하기</a> <a
-						href="${ pageContext.request.contextPath }/newReview"
-						class="btn btn-danger">지우기</a>
+						class="btn btn-warning">수정하기</a> 
+					<a href="${ pageContext.request.contextPath }/deleteOneReview?reviewId=${ reviewById.reviewId }" class="btn btn-danger">지우기</a>
 				</div>
 			</div>
 		</div>
+		<%@ include file="./inc/reply.jsp" %>
 		<%@ include file="./inc/footer.jsp"%>
 	</div>
 </body>

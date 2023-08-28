@@ -31,5 +31,11 @@ public class NotificationServiceImpl implements NotificationService {
 		public Notification readOneNotificationById(int notificationId) {
 			return notificationRepository.readOneNotificationById(notificationId);
 		}
+	
+	// Delete
+		@Override
+		public void deleteOneNotification(int notificationId) {
+			notificationRepository.deleteOneNotification(notificationId);
+		}
 
 }

@@ -14,4 +14,9 @@ public interface ReviewMapper {
 	
 	// Read
 		List<Review>readAllReview();
+	
+	// Update
+		
+	// Delete
+		void deleteOneReview(@Param("reviewId") int reviewId);
 }
