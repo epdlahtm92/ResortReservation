@@ -17,8 +17,8 @@ public class NotificationServiceImpl implements NotificationService {
 	
 	// Create
 		@Override
-		public int createNewNotification(Notification notification) {
-			return notificationRepository.createNewNotification(notification);
+		public void createNewNotification(Notification notification) {
+			notificationRepository.createNewNotification(notification);
 		}
 		
 	// Read

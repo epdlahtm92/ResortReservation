@@ -14,7 +14,7 @@ function trimSpaceStart(target) {
 <title>댓글 작성</title>
 </head>
 <body>
-	<div class="container" align="center" style="margin-top: 20px;">
+	<div class="container" align="center" style="margin-top: 50px;">
 		<table class="table table-hover">
 			<thead class="thead-light">
 				<tr>

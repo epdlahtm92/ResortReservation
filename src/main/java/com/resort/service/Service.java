@@ -27,7 +27,7 @@ public interface Service {
 	
 	interface NotificationService {
 		// Create
-			int createNewNotification(Notification notification); 
+			void createNewNotification(Notification notification); 
 		
 		// Read
 			List<Notification> readAllNotification();

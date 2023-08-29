@@ -40,7 +40,7 @@ public class HomeController {
 			c.setPath("/");
 			response.addCookie(c);
 		}
-		return "resortHome";
+		return "resort/resortHome";
 	}
 	
 }

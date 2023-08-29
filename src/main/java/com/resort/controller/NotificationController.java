@@ -22,39 +22,39 @@ public class NotificationController {
 	private Service.NotificationService notificationSerivce;
 	
 	private List<Notification> listofNotification;
+	private String imageDirectory = "C:\\03StringWorkspace\\ResortReservation\\src\\main\\webapp\\resources\\imageFiles\\";
 	
 	// Create
 		@GetMapping("/newNotification")
-		public String requestNewNotification(@ModelAttribute("newNotification") Notification notification) {
-			return "newNotification";
+		public String requestNewNotification(@ModelAttribute("newNotification") Notification notification, Model model) {
+			model.addAttribute("fileTypeAlert", "");
+			return "notification/newNotification";
 		}
 		
 		@PostMapping("/newNotification") 
 		public String submitNewNotification(@ModelAttribute("newNotification") Notification notification, Model model) {
-			
-			if (notification.getNotificationImageFile().getContentType().contains("image/") && notification.getNotificationImageFile() != null) {
-				String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
-				String notificationTitle = notification.getNotificationTitle().replaceAll(" ", "");
-				String originalFileName = notification.getNotificationImageFile().getOriginalFilename().replaceAll(" ", "");
-				String imageFileName = uuid + "_" + notificationTitle + "_" + originalFileName;
-				
-				notification.setNotificationImagePath(imageFileName);
-				try {
-					notification.getNotificationImageFile().transferTo(new File("C:\\03StringWorkspace\\ResortReservation\\src\\main\\webapp\\resources\\imageFiles\\" + imageFileName));
-				} catch (Exception e) {
-					e.printStackTrace();
+			if (!notification.getNotificationImageFile().getOriginalFilename().equals("")) {
+				if (notification.getNotificationImageFile().getContentType().contains("image/")) {
+					String uuid = UUID.randomUUID().toString().replaceAll(" ", "");
+					String notificationTitle = notification.getNotificationTitle().replaceAll(" ", "");
+					String originalFileName = notification.getNotificationImageFile().getOriginalFilename().replaceAll(" ", "");
+					String imageFileName = uuid + "_" + notificationTitle + "_" + originalFileName;
+					model.addAttribute("fileTypeAlert", "");
+					
+					notification.setNotificationImagePath(imageFileName);
+					try {
+						notification.getNotificationImageFile().transferTo(new File(imageDirectory + imageFileName));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else {
+					model.addAttribute("fileTypeAlert", "alert");
+					return "notification/newNotification";
 				}
-			} else if (notification.getNotificationImageFile() == null) {
-				model.addAttribute("fileTypeAlert", "false");
-			} else {
-				model.addAttribute("fileTypeAlert", "true");
-				return "newNotification";
 			}
 			
 			notificationSerivce.createNewNotification(notification);
-			int newNotificationId = notification.getNotificationId();
-			System.out.println("==" + newNotificationId);
-			return "redirect:/notification?notificationId=" + newNotificationId;
+			return "redirect:/notificationList";
 		}
 	
 	// Read
@@ -65,7 +65,7 @@ public class NotificationController {
 			
 			model.addAttribute("notificationList", listofNotification);
 			
-			return "notificationList";
+			return "notification/notificationList";
 		}
 		
 		@GetMapping("/notification")
@@ -73,7 +73,7 @@ public class NotificationController {
 			Notification notificationById = notificationSerivce.readOneNotificationById(notificationId);
 			model.addAttribute("notificationById", notificationById);
 			
-			return "notification";
+			return "notification/notification";
 		}
 		
 	// Update
@@ -81,7 +81,7 @@ public class NotificationController {
 		public String requestUpdateNotification(@RequestParam("notificationId") int notificationId, Model model) {
 			Notification updateNotification = notificationSerivce.readOneNotificationById(notificationId);
 			model.addAttribute("updateNotification", updateNotification);
-			return "updateNotification";
+			return "notification/updateNotification";
 		}
 		
 		@PostMapping("/updateOneNotification")
@@ -94,6 +94,9 @@ public class NotificationController {
 	// Delete
 		@GetMapping("/deleteOneNotification")
 		public String requestDeleteNotification(@RequestParam("notificationId") int notificationId) {
+			String imagePath = notificationSerivce.readOneNotificationById(notificationId).getNotificationImagePath();
+			File file = new File(imageDirectory + imagePath);
+			file.delete();
 			notificationSerivce.deleteOneNotification(notificationId);
 			return "redirect:/notificationList";
 		}

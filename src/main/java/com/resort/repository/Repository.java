@@ -27,7 +27,7 @@ public interface Repository {
 	
 	interface NotificationRepository {
 		// Create
-			int createNewNotification(Notification notification);
+			void createNewNotification(Notification notification);
 			
 		// Read
 			List<Notification> readAllNotification();

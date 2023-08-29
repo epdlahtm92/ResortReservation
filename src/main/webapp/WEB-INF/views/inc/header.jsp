@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,9 +66,17 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <a class="btn btn-outline-success my-2 my-sm-0" href="#">로그인</a>
-    </form>
+	<sec:authorize access="isAuthenticated()" var="isAuthenticated" />
+	<sec:authorize access="hasRole('ROLE_ADMIN')" var="isAdmin" />
+	<c:choose>
+		<c:when test="${ isAuthenticated }">
+		 	<span style="margin-right:10px;"><sec:authentication property="principal.username" var="username" />환영합니다. ${ username } 님  </span>
+			<a class="btn btn-outline-success my-2 my-sm-0" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
+		</c:when>
+		<c:otherwise>
+			<a class="btn btn-outline-success my-2 my-sm-0" href="${ pageContext.request.contextPath }/login">로그인</a>
+		</c:otherwise>
+	</c:choose>
   </div>
 </nav>
 </body>

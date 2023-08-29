@@ -19,11 +19,8 @@ public class NotificationRepositoryImpl implements NotificationRepository {
 	
 	// Create
 		@Override
-		public int createNewNotification(Notification notification) {
-			System.out.println("::" + notificationMapper.createNewNotification(notification));
-			int newNotificationId = notification.getNotificationId();
-			System.out.println("++++" + newNotificationId);
-			return newNotificationId;
+		public void createNewNotification(Notification notification) {
+			notificationMapper.createNewNotification(notification);
 		}
 		
 	// Read
