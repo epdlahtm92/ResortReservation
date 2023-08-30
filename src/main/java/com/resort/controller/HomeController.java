@@ -1,6 +1,7 @@
 package com.resort.controller;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,24 +19,32 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletResponse response, HttpServletRequest request, Model model) {
-		LocalDate today = LocalDate.now();
-		Cookie[] getCookie = request.getCookies();
+		String today = LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd_HH:mm:ss")); 
 		List<String> cookieNames = new ArrayList<String>();
-		
-		for (Cookie c : getCookie) {
-			cookieNames.add(c.getName());
-		}
-		
-		if (cookieNames.contains("connectionLog")) {
+		Cookie[] getCookie = request.getCookies();
+		if (request.getCookies() != null) {
 			for (Cookie c : getCookie) {
-				if(c.getName().equals("connectionLog")) {
-					model.addAttribute("connectionLog", "이전 방문 일시 : " + c.getValue().toString());
-					c.setValue(today.toString());
-				}
+				cookieNames.add(c.getName());
 			}
-		} else {
+			if (cookieNames.contains("connectionLog")) {
+				for (Cookie c : getCookie) {
+					if(c.getName().equals("connectionLog")) {
+						model.addAttribute("connectionLog", "이전 방문 일시 : " + c.getValue());
+						c.setValue(today);
+					}
+				}
+			} else {
+				model.addAttribute("connectionLog", "최초 방문 입니다!");
+				Cookie c = new Cookie("connectionLog" ,today);
+				c.setMaxAge(60*60*24);
+				c.setPath("/");
+				response.addCookie(c);
+			}
+			
+		} else {		
+		
 			model.addAttribute("connectionLog", "최초 방문 입니다!");
-			Cookie c = new Cookie("connectionLog" ,today.toString());
+			Cookie c = new Cookie("connectionLog" ,today);
 			c.setMaxAge(60*60*24);
 			c.setPath("/");
 			response.addCookie(c);

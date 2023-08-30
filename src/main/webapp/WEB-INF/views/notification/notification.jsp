@@ -29,23 +29,26 @@
 			</div>
 			<c:if test="${ not empty notificationById.notificationImagePath }">
 				<div class="container">
-					<img style="margin-bottom: 50px; margin:auto; display:block; width: 75%;"
+					<img
+						style="margin-bottom: 50px; margin: auto; display: block; width: 75%;"
 						src="${ pageContext.request.contextPath }/resources/imageFiles/${ notificationById.notificationImagePath }"
 						alt="사진 없음" />
 				</div>
 			</c:if>
+			<c:if test="${ isAdmin }">
+				<div class="container" style="margin-top: 50px;">
+					<div class="float-right">
+						<a
+							href="${ pageContext.request.contextPath }/updateOneNotification?notificationId=${ notificationById.notificationId }"
+							class="btn btn-warning">수정하기</a> <a
+							href="${ pageContext.request.contextPath }/deleteOneNotification?notificationId=${ notificationById.notificationId }"
+							class="btn btn-danger">지우기</a>
+					</div>
+				</div>
+			</c:if>
 		</div>
-		<div class="container" style="margin-top:50px;">
-			<div class="float-right">
-				<a
-					href="${ pageContext.request.contextPath }/updateOneNotification?notificationId=${ notificationById.notificationId }"
-					class="btn btn-warning">수정하기</a> <a
-					href="${ pageContext.request.contextPath }/deleteOneNotification?notificationId=${ notificationById.notificationId }"
-					class="btn btn-danger">지우기</a>
-			</div>
-		</div>
-
 		<%@ include file="../inc/footer.jsp"%>
 	</div>
+
 </body>
 </html>

@@ -7,6 +7,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/css/bootstrap.bundle.min.js"></script>
 <link href="${ pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
+<sec:authorize access="isAuthenticated()" var="isAuthenticated" />
+<sec:authorize access="hasRole('ROLE_ADMIN')" var="isAdmin" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -66,15 +68,18 @@
         </div>
       </li>
     </ul>
-	<sec:authorize access="isAuthenticated()" var="isAuthenticated" />
-	<sec:authorize access="hasRole('ROLE_ADMIN')" var="isAdmin" />
+	
 	<c:choose>
 		<c:when test="${ isAuthenticated }">
 		 	<span style="margin-right:10px;"><sec:authentication property="principal.username" var="username" />환영합니다. ${ username } 님  </span>
-			<a class="btn btn-outline-success my-2 my-sm-0" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
+		 	<form action="${ pageContext.request.contextPath }/logout" method="post">
+		 		<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
+		 		<button type="submit" class="btn btn-outline-success my-2 my-sm-0">로그아웃</button>
+		 	</form>
 		</c:when>
 		<c:otherwise>
-			<a class="btn btn-outline-success my-2 my-sm-0" href="${ pageContext.request.contextPath }/login">로그인</a>
+			<a class="btn btn-outline-success my-2 my-sm-0" href="" data-toggle="modal" data-target="#login">로그인</a>
+			<%@ include file="../security/modalLogIn.jsp" %>
 		</c:otherwise>
 	</c:choose>
   </div>

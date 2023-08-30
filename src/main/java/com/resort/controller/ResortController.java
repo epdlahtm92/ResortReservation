@@ -1,4 +1,4 @@
-package com.resort.controller;
+	package com.resort.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ResortController {
 
 	// Tab 1
-		@GetMapping("/admin/resortInfo")
+		@GetMapping("/resortInfo")
 		public String requestResortInfo() {
 			return "resort/resortInfo";
 		}

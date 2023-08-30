@@ -17,7 +17,7 @@
        <intercept-url pattern="/**"  access="permitAll" />
        <form-login password-parameter="password" username-parameter="username" authentication-failure-url="/loginfailed"/>
        <csrf />
-<!--        <logout logout-success-url="/logoutSuccess" /> -->
+		<logout logout-success-url="/logOutSuccess" />
     </http>    
     
    <authentication-manager>
