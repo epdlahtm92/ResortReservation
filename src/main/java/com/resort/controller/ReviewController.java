@@ -46,19 +46,18 @@ public class ReviewController {
 				String originalFileName = review.getReviewImageFile().getOriginalFilename().replaceAll(" ", "");
 				String imageFileName = uuid + "_" + reviewTitle + "_" + originalFileName;
 				model.addAttribute("fileTypeAlert", "");
-				
+
 				review.setReviewImagePath(imageFileName);
 				try {
 					review.getReviewImageFile().transferTo(new File(imageDirectory + imageFileName));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			} else {
+				model.addAttribute("fileTypeAlert", "alert");
+				return "review/newReview";
 			}
-		} else {
-			model.addAttribute("fileTypeAlert", "alert");
-			return "review/newReview";
 		}
-
 		reviewService.createOneReview(review);
 		return "redirect:/reviewList";
 	}

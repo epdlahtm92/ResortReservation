@@ -15,7 +15,7 @@
        <intercept-url pattern="/manager/**"  access="hasRole('ROLE_MANAGER')" />
        <intercept-url pattern="/member/**"  access="isAuthenticated()" />
        <intercept-url pattern="/**"  access="permitAll" />
-       <form-login password-parameter="password" username-parameter="username" authentication-failure-url="/loginfailed"/>
+       <form-login password-parameter="password" username-parameter="username" authentication-failure-url="/logInFailed" default-target-url="/logInSuccess" />
        <csrf />
 		<logout logout-success-url="/logOutSuccess" />
     </http>    

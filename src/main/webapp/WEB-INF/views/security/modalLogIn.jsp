@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,9 @@
 				<form action="${ pageContext.request.contextPath }/login"
 					method="POST" class="was-validated">
 					<div class="modal-body">
+						<c:if test="${ logInError }">
+							<div class="alert alert-danger" role="alert">아이디 또는 비밀번호가 틀립니다.</div>
+						</c:if>
 						<div class="form-group">
 							<label for="username">아이디 </label> <input type="text"
 								class="form-control" id="username" name="username"

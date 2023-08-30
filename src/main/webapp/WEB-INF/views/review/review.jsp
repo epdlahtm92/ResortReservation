@@ -27,7 +27,8 @@
 			</div>
 			<c:if test="${ not empty reviewById.reviewImagePath }">
 				<div class="container">
-					<img style="margin:auto; display:block; width: 75%;"
+					<img 
+						style="margin-bottom: 50px; margin: auto; display: block; width: 75%;"
 						src="${ pageContext.request.contextPath }/resources/imageFiles/${ reviewById.reviewImagePath }"
 						alt="사진 없음" />
 				</div>
@@ -35,6 +36,7 @@
 		</div>
 		<div class="container">
 			<div class="float-right" style="margin-bottom:25px;">
+				<a href="${ pageContext.request.contextPath }/reviewList" class="btn btn-secondary"></a>
 				<a
 					href="${ pageContext.request.contextPath }/updateOneReview?reviewId=${ reviewById.reviewId}"
 					class="btn btn-warning">수정하기</a> <a
