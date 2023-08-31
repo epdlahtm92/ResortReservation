@@ -90,7 +90,7 @@
 				</script>
 			</c:if>
 			<c:choose>
-				<c:when test="${ isAuthenticated and isAdmin eq 'false' }">
+				<c:when test="${ isAuthenticated and isAdmin eq false }">
 					<span style="margin-right: 10px;">
 						<sec:authentication property="principal.username" var="username" />환영합니다. ${ username } 님
 					</span>

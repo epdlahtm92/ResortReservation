@@ -20,7 +20,10 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
-		auth.add(new SimpleGrantedAuthority(authority));
+		for (String eachAuth : authority.split(", ")) {
+			System.out.println("eachAuth :: " + eachAuth);
+			auth.add(new SimpleGrantedAuthority(eachAuth));
+		}
 		return auth;
 	}
 	
