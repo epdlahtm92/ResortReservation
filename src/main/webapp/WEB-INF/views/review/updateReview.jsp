@@ -14,14 +14,14 @@ function trimSpaceStart(target) {
 }
 </script>
 <meta charset="UTF-8">
-<title>공지사항 작성</title>
+<title>이용 후기 수정하기</title>
 </head>
 <body>
 	<%@ include file="../inc/header.jsp" %>
 	<div class="container">
 		<form:form modelAttribute="updateReview" class="form-horizontal" method="post">
 			<fieldset>
-				<legend>${ newNotificationTitle}</legend>
+				<legend style="text-align:center;">이용 후기 수정하기</legend>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">제목</label>
 					<div class="col -sm-3">
@@ -48,7 +48,8 @@ function trimSpaceStart(target) {
 				</div>
 			</fieldset>
 		</form:form>
-		<%@ include file="../inc/footer.jsp" %>
 	</div>
+	
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

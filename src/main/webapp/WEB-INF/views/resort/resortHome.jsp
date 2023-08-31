@@ -16,14 +16,13 @@
 	</div>
 	<div class="container" style="text-align: center">
 		<h3>Welcome to KOPO Resort!</h3>
-		<h5	>${ connectionLog }</h5>
+		<h5>${ connectionLog }</h5>
 		<h6>
 			<c:out value="gitHub : https://github.com/epdlahtm92" />
 		</h6>
+	</div>
 
 		<%@ include file="../inc/footer.jsp"%>
-
-	</div>
 
 </body>
 </html>

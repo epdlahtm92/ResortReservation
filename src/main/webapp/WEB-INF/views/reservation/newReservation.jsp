@@ -20,11 +20,11 @@
 <body>
 	<%@ include file="../inc/header.jsp"%>
 
-	<div class="container">
+	<div class="container" style="margin-top:25px;">
 		<form:form modelAttribute="newReservation" class="form-horizontal"
 			method="post">
 			<fieldset>
-			<legend style="text-align:center;">${ newReservationTitle }</legend>
+			<legend style="text-align:center; margin-bottom:25px;">예약 하기</legend>
 				<div class="form-group-row" style="text-align:center;">
 					<c:choose>
 						<c:when test="${ newReservation.reservationRoom eq 0}">
@@ -93,7 +93,8 @@
 				</div>
 			</fieldset>
 		</form:form>
-		<%@ include file="../inc/footer.jsp"%>
 	</div>
+	
+	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

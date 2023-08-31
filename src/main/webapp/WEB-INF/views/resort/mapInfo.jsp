@@ -8,9 +8,11 @@
 </head>
 <body>
 	<%@ include file="../inc/header.jsp" %>
+	
 	<div class="container">
 		<h3>지도!</h3>
 	</div>
+	
 	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

@@ -10,8 +10,8 @@
 <body>
 	<%@ include file="../inc/header.jsp" %>
 	
-	<div class="container" style="text-align:center;">
-		<h3>예약 현황</h3>
+	<div class="container" style="text-align:center; margin-top:25px;">
+		<h3 style="margin-bottom:25px;">예약 현황</h3>
 			<table class="table table-hover">
 				<thead class="thead-dark">
 					<tr>

@@ -7,7 +7,6 @@
 <title>객실 정보</title>
 </head>
 <body>
-
 	<%@ include file="../inc/header.jsp"%>
 
 	<div class="jumbotron" style="padding: 0px;">
@@ -15,7 +14,8 @@
 			src="${ pageContext.request.contextPath }/resources/imageFiles/sight0.jpg"
 			alt="사진 없음" />
 	</div>
-	<div class="container" style="margin-top: 50px; margin-bottom: 150px; text-align:center;">
+	<div class="container"
+		style="margin-top: 50px; margin-bottom: 150px; text-align: center;">
 		<h3>AA 국립공원</h3>
 		<p>국립 공원 설명
 		<p>국립 공원 설명
@@ -23,6 +23,7 @@
 		<p>국립 공원 설명
 		<p>국립 공원 설명
 	</div>
+	
 	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

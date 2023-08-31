@@ -9,14 +9,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @SuppressWarnings("serial")
 public class CustomUserDetails implements UserDetails {
-	
+
 	private String username;
 	private String password;
+	private String confirmPassword;
 	private String email;
+	private String emailDomain;
 	private String authority;
 	private String registrationDate;
 	private String phoneNumber;
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
@@ -26,7 +28,7 @@ public class CustomUserDetails implements UserDetails {
 		}
 		return auth;
 	}
-	
+
 	@Override
 	public String getPassword() {
 		return password;
@@ -64,6 +66,18 @@ public class CustomUserDetails implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
+	public String getEmail() {
+		return email;
+	}
 
 	public void setEmail(String email) {
 		this.email = email;
@@ -72,11 +86,7 @@ public class CustomUserDetails implements UserDetails {
 	public void setRegistrationDate(String registrationDate) {
 		this.registrationDate = registrationDate;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
+	
 	public String getRegistrationDate() {
 		return registrationDate;
 	}
@@ -91,6 +101,15 @@ public class CustomUserDetails implements UserDetails {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmailDomain() {
+		return emailDomain;
+	}
+
+	public void setEmailDomain(String emailDomain) {
+		email = email + emailDomain;
+		this.emailDomain = emailDomain;
 	}
 
 }

@@ -10,11 +10,13 @@
 <body>
 	<%@ include file="../inc/header.jsp"%>
 
-	<div class="container" style="margin-top: 50px;">
+	<div class="container" style="margin-top: 25px; text-align: center">
+		<h3>공지 사항</h3>
 		<div class="row">
 			<div class="container" style="text-align: center;">
+				<hr />
 				<h3>
-					<c:out value="${ notificationById.notificationTitle }" />
+					<c:out value="제목 : ${ notificationById.notificationTitle }" />
 				</h3>
 				<p>
 					<b>작성자 : </b>
@@ -22,21 +24,22 @@
 					<br /> <b>날짜 : </b>
 					<c:out value="${ notificationById.notificationDate }" />
 				<p>
-					<b>내용 : </b> <br />
+				<hr />
+				<b>내용 : </b> <br />
 				<h5>
 					<c:out value="${ notificationById.notificationContent }" />
 				</h5>
 			</div>
-			<c:if test="${ not empty notificationById.notificationImagePath }">
-				<div class="container">
-					<img
-						style="margin-bottom: 50px; margin: auto; display: block; width: 75%;"
+			<div class="container" style="height: 100px;">
+				<c:if test="${ not empty notificationById.notificationImagePath }">
+					<img style="margin-bottom: 50px; margin: auto; display: block;"
 						src="${ pageContext.request.contextPath }/resources/imageFiles/${ notificationById.notificationImagePath }"
 						alt="사진 없음" />
-				</div>
-			</c:if>
+				</c:if>
+			</div>
 			<c:if test="${ isAdmin }">
 				<div class="container" style="margin-top: 50px;">
+					<hr />
 					<div class="float-right">
 						<a
 							href="${ pageContext.request.contextPath }/updateOneNotification?notificationId=${ notificationById.notificationId }"
@@ -47,8 +50,8 @@
 				</div>
 			</c:if>
 		</div>
-		<%@ include file="../inc/footer.jsp"%>
 	</div>
 
+	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

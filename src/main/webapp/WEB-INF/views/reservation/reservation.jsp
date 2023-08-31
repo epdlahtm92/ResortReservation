@@ -9,15 +9,16 @@
 </head>
 <body>
 	<%@ include file="../inc/header.jsp"%>
+
 	<div class="container">
 		<div class="row">
 			<div class="col -md-4" style="text-align: center;">
-				<h3 style="margin-top: 25px;">
+				<h3 style="margin-top: 25px; margin-bottom: 25px;">
 					<c:out value="예약 정보 보기" />
 				</h3>
 				<c:choose>
 					<c:when test="${reservation.reservationRoom eq 0 }">
-						<img style="width: 100%;"
+						<img style="width: 100%; margin-bottom: 25px;"
 							src="${ pageContext.request.contextPath }/resources/imageFiles/room0.jpg"
 							alt="사진 없음" />
 						<b>예약 객실 : </b>
@@ -60,7 +61,8 @@
 				</div>
 			</div>
 		</div>
-		<%@ include file="../inc/footer.jsp"%>
 	</div>
+
+	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

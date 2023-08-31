@@ -7,15 +7,15 @@
 <head>
 <script>
 	function oninputPhone(target) {
-	    target.value = target.value
-	        .replace(/[^0-9]/g, '')
-	        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
+		target.value = target.value.replace(/[^0-9]/g, '').replace(
+				/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g,
+				"$1-$2-$3");
 	}
-	
+
 	function trimSpace(target) {
 		target.value = target.value.trim();
 	}
-	
+
 	function trimSpaceStart(target) {
 		target.value = target.value.trimStart();
 	}
@@ -26,14 +26,14 @@
 <body>
 	<%@ include file="../inc/header.jsp"%>
 
-	<div class="container">
+	<div class="container" style="margin-top:25px;">
 		<form:form modelAttribute="updateReservation" class="form-horizontal"
 			method="post">
 			<fieldset>
-			<legend style="text-align:center;">${ newReservationTitle }</legend>
-				<div class="form-group-row" style="text-align:center;">
+				<legend style="text-align: center; margin-bottom:25px;">예약 수정</legend>
+				<div class="form-group-row" style="text-align: center;">
 					<c:choose>
-						<c:when test="${ newReservation.reservationRoom eq 0}">
+						<c:when test="${ updateReservation.reservationRoom eq 0}">
 							<div class="jumbotron" style="padding: 0px;">
 								<img style="width: 100%;"
 									src="${ pageContext.request.contextPath }/resources/imageFiles/room0.jpg"
@@ -41,65 +41,72 @@
 							</div>
 							<h5>예약 객실 : VIP 객실</h5>
 						</c:when>
-						<c:when test="${ newReservation.reservationRoom eq 1}">
+						<c:when test="${ updateReservation.reservationRoom eq 1}">
 							<div class="jumbotron" style="padding: 0px;">
-									<img style="width: 100%;"
-										src="${ pageContext.request.contextPath }/resources/imageFiles/room1.jpg"
-										alt="사진 없음" />
+								<img style="width: 100%;"
+									src="${ pageContext.request.contextPath }/resources/imageFiles/room1.jpg"
+									alt="사진 없음" />
 							</div>
 							<h5>예약 객실 : 고급 객실</h5>
 						</c:when>
-						<c:when test="${ newReservation.reservationRoom eq 2}">
+						<c:when test="${ updateReservation.reservationRoom eq 2}">
 							<div class="jumbotron" style="padding: 0px;">
-									<img style="width: 100%;"
-										src="${ pageContext.request.contextPath }/resources/imageFiles/room2.jpg"
-										alt="사진 없음" />
+								<img style="width: 100%;"
+									src="${ pageContext.request.contextPath }/resources/imageFiles/room2.jpg"
+									alt="사진 없음" />
 							</div>
 							<h5>예약 객실 : 일반 객실</h5>
 						</c:when>
 					</c:choose>
-					<h5>예약 일자 : ${ newReservation.reservationDate }</h5>
+					<h5>예약 일자 : ${ updateReservation.reservationDate }</h5>
 				</div>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">이름</label>
 					<div class="col -sm-3">
-						<form:input path="name" class="form-control" oninput="trimSpace(this)" required="true" />
+						<form:input path="name" class="form-control"
+							oninput="trimSpace(this)" required="true" />
 					</div>
 				</div>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">주소</label>
 					<div class="col -sm-3">
-						<form:input path="address" class="form-control" oninput="trimSpaceStart(this)" required="true" />
+						<form:input path="address" class="form-control"
+							oninput="trimSpaceStart(this)" required="true" />
 					</div>
 				</div>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">전화번호</label>
 					<div class="col -sm-3">
-						<form:input path="phoneNumber" class="form-control" oninput="oninputPhone(this)" maxlength="14" required="true" />
+						<form:input path="phoneNumber" class="form-control"
+							oninput="oninputPhone(this)" maxlength="14" required="true" />
 					</div>
 				</div>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">입금자명</label>
 					<div class="col -sm-3">
-						<form:input path="payer" class="form-control" oninput="trimSpace(this)" required="true" />
+						<form:input path="payer" class="form-control"
+							oninput="trimSpace(this)" required="true" />
 					</div>
 				</div>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">남기실 말</label>
 					<div class="col -sm-3">
-						<form:textarea path="userComment" class="form-control" oninput="trimSpaceStart(this)" required="true"/>
+						<form:textarea path="userComment" class="form-control"
+							oninput="trimSpaceStart(this)" required="true" />
 					</div>
 				</div>
-				<div class="float-right" style="margin-top:25px;">
+				<div class="float-right" style="margin-top: 25px;">
 					<div class="col -sm-offset-2 col -sm-10">
-						<a href="${pageContext.request.contextPath }/reservationList" class="btn btn-danger" >예약 현황으로</a> 
-						<input type="reset" class="btn btn-warning" value="다시쓰기" /> 
-						<input type="submit" class="btn btn-primary" value="확인" />
+						<a href="${pageContext.request.contextPath }/reservationList"
+							class="btn btn-danger">예약 현황으로</a> <input type="reset"
+							class="btn btn-warning" value="다시쓰기" /> <input type="submit"
+							class="btn btn-primary" value="확인" />
 					</div>
 				</div>
 			</fieldset>
 		</form:form>
-		<%@ include file="../inc/footer.jsp"%>
 	</div>
+
+	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

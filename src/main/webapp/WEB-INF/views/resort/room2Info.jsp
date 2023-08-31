@@ -15,7 +15,8 @@
 			src="${ pageContext.request.contextPath }/resources/imageFiles/room2.jpg"
 			alt="사진 없음" />
 	</div>
-	<div class="container" style="margin-top: 50px; margin-bottom: 150px; text-align:center;">
+	<div class="container"
+		style="margin-top: 50px; margin-bottom: 150px; text-align: center;">
 		<h3>일반 객실 안내</h3>
 		<p>일반 객실 설명
 		<p>일반 객실 설명
@@ -26,8 +27,8 @@
 			<a href="${ pageContext.request.contextPath }/reservationList"
 				class="btn btn-primary">예약 현황</a>
 		</div>
-
 	</div>
+	
 	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

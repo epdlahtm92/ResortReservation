@@ -16,11 +16,12 @@
 			window.alert('이미지 파일만 업로드 하세요');
 		</script>
 	</c:if>
-	<div class="container">
+	<div class="container" style="margin-top:25px;">
 		<form:form modelAttribute="newNotification" class="form-horizontal"
 			method="post" enctype="multipart/form-data">
 			<fieldset>
-				<legend>공지사항 작성하기</legend>
+				<legend style="text-align:center;">공지사항 작성하기</legend>
+				<hr/>
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">제목</label>
 					<div class="col -sm-3">
@@ -42,6 +43,7 @@
 						<form:input type="file" path="notificationImageFile" accept="image/gif, image/jpeg, image/png"/>
 					</div>
 				</div>
+				<hr/>
 				<div class="float-right" style="margin-top: 25px;">
 					<div class="col -sm-offset-2 col -sm-10">
 						<input type="reset" class="btn btn-warning" value="다시쓰기" /> <input

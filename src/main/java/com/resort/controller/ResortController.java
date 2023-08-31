@@ -56,6 +56,10 @@ public class ResortController {
 			return "security/adminPage";
 		}
 		
-
+	////////////test
+		@GetMapping("/subregi")
+		public String subregi() {
+			return "security/submitRegistration";
+		}
 		
 }
