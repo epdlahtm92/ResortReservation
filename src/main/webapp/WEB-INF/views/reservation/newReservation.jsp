@@ -11,15 +11,9 @@
 	        .replace(/[^0-9]/g, '')
 	        .replace(/(^02.{0}|^01.{1}|[0-9]{3,4})([0-9]{3,4})([0-9]{4})/g, "$1-$2-$3");
 	}
-	
-	function trimSpace(target) {
-		target.value = target.value.trim();
-	}
-	
-	function trimSpaceStart(target) {
-		target.value = target.value.trimStart();
-	}
 </script>
+<script
+	src="${pageContext.request.contextPath }/resources/javaScriptFiles/trimSpace.js"></script>
 <meta charset="UTF-8">
 <title>예약 하기</title>
 </head>
@@ -75,7 +69,7 @@
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">전화번호</label>
 					<div class="col -sm-3">
-						<form:input path="phoneNumber" class="form-control" oninput="oninputPhone(this)" maxlength="14" required="true" />
+						<form:input path="phoneNumber" class="form-control" oninput="oninputPhone(this)" minlength="13" maxlength="14" required="true" />
 					</div>
 				</div>
 				<div class="form-group-row">

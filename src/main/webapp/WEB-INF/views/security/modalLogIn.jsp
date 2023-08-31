@@ -42,7 +42,7 @@
 					<!-- modal footer -->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-						<a href="" class="btn btn-secondary">회원가입</a>
+						<a href="${ pageContext.request.contextPath }/newRegistration" class="btn btn-secondary">회원가입</a>
 						<button type="submit" class="btn btn-primary">로그인</button>
 					</div>
 				</form>

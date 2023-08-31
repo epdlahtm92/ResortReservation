@@ -1,5 +1,7 @@
 package com.resort.security;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,9 +13,19 @@ public class UserAuthDAO {
 	
 	@Autowired
 	private UserMapper userMapper;
-	
-	// Read (login)
-		public CustomUserDetails getUserByUserName(String username) {
-			return userMapper.getUserByUserName(username);
+	// Create
+		void createOneUser(CustomUserDetails customUserDetails) {
+			userMapper.createOneUser(customUserDetails);
 		}
+	
+	// Read
+		List<String> readAllUsername() {
+			return userMapper.readAllUsername();
+		}
+		
+		//(login)
+		public CustomUserDetails getUserByUsername(String username) {
+			return userMapper.getUserByUsername(username);
+		}
+			
 }

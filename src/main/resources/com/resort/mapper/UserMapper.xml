@@ -2,10 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.resort.mapper.UserMapper">
 	<!-- Create -->
-	<!-- Read -->
-		<select id="getUserByUserName" parameterType="String" resultType="com.resort.security.CustomUserDetails">
+		<insert id="createOneUser" parameterType="com.resort.security.CustomUserDetails">
+			insert into users (username, password, email, phonenumber) values ('${CustomUserDetails.username}', '${CustomUserDetails.password}', '${CustomUserDetails.email}', '${CustomUserDetails.phonenumber}')
+		</insert>
+	<!-- Read -->	
+		<select id="readAllUsername" resultType="com.resort.security.CustomUserDetails">
+			select username from users
+		</select>
+		
+		<select id="getUserByUsername" parameterType="String" resultType="com.resort.security.CustomUserDetails">
 			select * from users where username = '${userName}'
 		</select>
+	
 	<!-- Update -->
+	
 	<!-- Delete -->
+	
 </mapper>

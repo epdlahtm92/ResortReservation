@@ -36,13 +36,25 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<nav aria-label="Page navigation example">
+		<nav aria-label="Page navigation example" style="margin-top: 25px;">
+			<form class="form-inline justify-content-center"
+				style="margin-bottom: 25px;">
+				<select class="custom-select">
+					<option selected>검색</option>
+					<option value="1" selected>제목</option>
+					<option value="2">내용</option>
+					<option value="3">제목+내용</option>
+				</select> <input class="form-control mr-sm-2" type="search"
+					placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+			</form>
 			<ul class="pagination justify-content-center">
-				<li class="page-item disabled"><a class="page-link">&laquo;</a>
-				</li>
+				<li class="page-item disabled"><a class="page-link">&laquo;</a></li>
 				<li class="page-item"><a class="page-link" href="#">1</a></li>
 				<li class="page-item"><a class="page-link" href="#">2</a></li>
 				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
 				<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
 			</ul>
 		</nav>

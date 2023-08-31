@@ -1,5 +1,7 @@
 package com.resort.security;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,13 +12,24 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserAuthDAO userAuthDAO;
 	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		CustomUserDetails user = userAuthDAO.getUserByUserName(username);
-		if (user == null) {
-			throw new UsernameNotFoundException(username);
+	// Create
+		public void createOneUser(CustomUserDetails customUserDetails) {
+			userAuthDAO.createOneUser(customUserDetails);
 		}
-		return user;
-	}
+	
+	
+	// Read
+		@Override
+		public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+			CustomUserDetails user = userAuthDAO.getUserByUsername(username);
+			if (user == null) {
+				throw new UsernameNotFoundException(username);
+			}
+			return user;
+		}
+		
+		public List<String> readAllUsername() {
+			return userAuthDAO.readAllUsername();
+		}
 
 }
