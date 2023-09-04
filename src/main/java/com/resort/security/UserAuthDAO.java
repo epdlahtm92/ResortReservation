@@ -28,4 +28,17 @@ public class UserAuthDAO {
 			return userMapper.getUserByUsername(username);
 		}
 			
+		List<CustomUserDetails> readAllUser(){
+			return userMapper.readAllUser();
+		}
+		
+	// Update
+		void updateOneUser(CustomUserDetails customUserDetails) {
+			userMapper.updateOneUser(customUserDetails);
+		}
+		
+	// Delete
+		void deleteOneUser(String username) {
+			userMapper.deleteOneUser(username);
+		}
 }

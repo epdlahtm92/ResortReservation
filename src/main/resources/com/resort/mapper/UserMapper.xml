@@ -3,7 +3,8 @@
 <mapper namespace="com.resort.mapper.UserMapper">
 	<!-- Create -->
 		<insert id="createOneUser" parameterType="com.resort.security.CustomUserDetails">
-			insert into users (username, password, email, phonenumber) values ('${CustomUserDetails.username}', '${CustomUserDetails.password}', '${CustomUserDetails.email}', '${CustomUserDetails.phonenumber}')
+			insert into users (username, realname, password, email, emaildomain, phonenumber) 
+				values ('${CustomUserDetails.username}', '${CustomUserDetails.realName}', '${CustomUserDetails.password}', '${CustomUserDetails.email}', '${CustomUserDetails.emailDomain}', '${CustomUserDetails.phonenumber}')
 		</insert>
 	<!-- Read -->	
 		<select id="readAllUsername" resultType="com.resort.security.CustomUserDetails">
@@ -13,9 +14,18 @@
 		<select id="getUserByUsername" parameterType="String" resultType="com.resort.security.CustomUserDetails">
 			select * from users where username = '${userName}'
 		</select>
+		
+		<select id="readAllUser" resultType="com.resort.security.CustomUserDetails">
+			select * from users
+		</select>
 	
 	<!-- Update -->
-	
+		<update id="updateOneUser" parameterType="com.resort.security.CustomUserDetails">
+			update users set realname='${CustomUserDetails.realName}', password='${CustomUserDetails.password}', email='${CustomUserDetails.email}', authority='${CustomUserDetails.authority}', phonenumber='${CustomUserDetails.phoneNumber}' where username='${CustomUserDetails.username}'
+		</update>
+		
 	<!-- Delete -->
-	
+		<delete id="deleteOneUser" parameterType="String">
+			delete from users where username='${ username }'
+		</delete>
 </mapper>

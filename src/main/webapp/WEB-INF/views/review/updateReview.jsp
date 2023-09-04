@@ -18,10 +18,11 @@ function trimSpaceStart(target) {
 </head>
 <body>
 	<%@ include file="../inc/header.jsp" %>
-	<div class="container">
+	<div class="container" style="margin-top:25px;">
 		<form:form modelAttribute="updateReview" class="form-horizontal" method="post">
 			<fieldset>
 				<legend style="text-align:center;">이용 후기 수정하기</legend>
+				<hr />
 				<div class="form-group-row">
 					<label class="col-sm-2 control-label">제목</label>
 					<div class="col -sm-3">

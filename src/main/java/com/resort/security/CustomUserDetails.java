@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class CustomUserDetails implements UserDetails {
 
 	private String username;
+	private String realName;
 	private String password;
 	private String confirmPassword;
 	private String email;
@@ -94,6 +95,10 @@ public class CustomUserDetails implements UserDetails {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+	
+	public String getAuthority() {
+		return authority;
+	}
 
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -108,8 +113,15 @@ public class CustomUserDetails implements UserDetails {
 	}
 
 	public void setEmailDomain(String emailDomain) {
-		email = email + emailDomain;
 		this.emailDomain = emailDomain;
+	}
+
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 
 }

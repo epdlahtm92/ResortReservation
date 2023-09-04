@@ -68,8 +68,7 @@
 					data-toggle="dropdown" aria-expanded="false"> 예약 하기 </a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item"
-							href="${ pageContext.request.contextPath }/reservationList">예약
-							상황</a>
+							href="${ pageContext.request.contextPath }/reservationList">예약 하기</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item"
 							href="${ pageContext.request.contextPath }/adminPage">관리자 페이지</a>
@@ -92,7 +91,7 @@
 			<c:choose>
 				<c:when test="${ isAuthenticated and isAdmin eq false }">
 					<span style="margin-right: 10px;">
-						<sec:authentication property="principal.username" var="username" />환영합니다. ${ username } 님
+						<sec:authentication property="principal.username" var="loginUser" />환영합니다. ${ loginUser } 님
 					</span>
 					<div class="dropdown" style="margin-right:10px;">
 						<button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -100,7 +99,7 @@
 						</button>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">나의 예약</a> <a
-								class="dropdown-item" href="#">회원정보수정</a> <a
+								class="dropdown-item" href="${ pageContext.request.contextPath }/member/oneUserInfo?username=${ loginUser }">나의 회원 정보</a> <a
 								class="dropdown-item" href="#">Something else here</a>
 						</div>
 					</div>
@@ -113,16 +112,16 @@
 				</c:when>
 				<c:when test="${ isAdmin }">
 					<span style="margin-right: 10px;">
-						<sec:authentication property="principal.username" var="username" />환영합니다. ${ username } 님 
+						<sec:authentication property="principal.username" var="loginUser" />환영합니다. ${ loginUser } 님 
 					</span>
 					<div class="dropdown" style="margin-right:10px;">
 						<button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
 							관리자 페이지
 						</button>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${ pageContext.request.contextPath }/reservationList">예약현황</a> 
-							<a class="dropdown-item" href="#">회원정보확인</a> 
-							<a class="dropdown-item" href="#">사이트정보</a>
+							<a class="dropdown-item" href="${ pageContext.request.contextPath }/reservationList">예약 현황</a> 
+							<a class="dropdown-item" href="${ pageContext.request.contextPath }/admin/allUserInfo">회원 관리</a> 
+							<a class="dropdown-item" href="#">사이트 정보</a>
 						</div>
 					</div>
 					<form action="${ pageContext.request.contextPath }/logout"

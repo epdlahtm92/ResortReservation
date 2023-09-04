@@ -86,7 +86,8 @@
 				</c:forEach> 
 				</tbody>
 			</table>
-		<%@ include file="../inc/footer.jsp" %>
 	</div>
+	
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

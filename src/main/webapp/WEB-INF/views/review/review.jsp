@@ -13,6 +13,7 @@
 	<div class="container" style="margin-top: 25px;">
 		<div class="row">
 			<div class="container" style="text-align: center;">
+				<h6>이용 후기</h6>
 				<h3>
 					<c:out value="제목 : ${ reviewById.reviewTitle }" />
 				</h3>

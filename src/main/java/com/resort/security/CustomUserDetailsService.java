@@ -37,5 +37,21 @@ public class CustomUserDetailsService implements UserDetailsService {
 		public List<String> readAllUsername() {
 			return userAuthDAO.readAllUsername();
 		}
+		
+		public List<CustomUserDetails> readAllUser(){
+			return userAuthDAO.readAllUser();
+		}
+	
+	// Update
+		public void updateOneUser(CustomUserDetails customUserDetails) {
+			String rawPassword = customUserDetails.getPassword();
+			customUserDetails.setPassword(passwordEncoder.encode(rawPassword));
+			userAuthDAO.updateOneUser(customUserDetails);
+		}
+		
+	// Delete
+		public void deleteOneUser(String username) {
+			userAuthDAO.deleteOneUser(username);
+		}
 
 }

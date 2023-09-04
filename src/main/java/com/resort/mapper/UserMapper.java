@@ -16,7 +16,11 @@ public interface UserMapper {
 		List<String> readAllUsername();
 	
 		public CustomUserDetails getUserByUsername(@Param("userName") String username);
+		
+		List<CustomUserDetails> readAllUser();
 	// Update
-	
+		void updateOneUser(@Param("CustomUserDetails") CustomUserDetails customUserDetails);
+		
 	// Delete
+		void deleteOneUser(@Param("username") String username);
 }
