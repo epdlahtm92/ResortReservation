@@ -33,7 +33,7 @@
 			<div class="container" style="height: 100px;">
 				<c:if test="${ not empty notificationById.notificationImagePath }">
 					<img style="margin-bottom: 50px; margin: auto; display: block;"
-						src="${ pageContext.request.contextPath }/resources/imageFiles/${ notificationById.notificationImagePath }"
+						src="/home/kopo17/upload/${ notificationById.notificationImagePath }"
 						alt="사진 없음" />
 				</c:if>
 			</div>

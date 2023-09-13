@@ -31,7 +31,7 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
-		<beans:constructor-arg value="C:\\03StringWorkspace\\ResortReservation\\src\\main\\webapp\\resources\\imageFiles\\"></beans:constructor-arg>
+		<beans:constructor-arg value="/home/kopo17/upload/"></beans:constructor-arg>
 	</beans:bean>
 	
 </beans:beans>

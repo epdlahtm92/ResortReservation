@@ -15,9 +15,7 @@
 			</div>
 		</div>
 		<div class="row justify-content-md-center" style="margin-top:25px;">
-			<a style="margin-right:10px;" class="btn btn-info" href="${ pageContext.request.contextPath }/">홈</a> <a
-				class="btn btn-outline-success my-2 my-sm-0" href=""
-				data-toggle="modal" data-target="#login">로그인</a>
+			<a style="margin-right:10px;" class="btn btn-info" href="${ pageContext.request.contextPath }/">홈</a>
 		</div>
 	</div>
 	<%@ include file="../inc/footer.jsp"%>

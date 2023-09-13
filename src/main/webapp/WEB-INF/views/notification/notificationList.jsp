@@ -24,19 +24,20 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${ notificationList }" var="notification">
-						<tr>
-							<td><a
-								href="${pageContext.request.contextPath }/notification?notificationId=${ notification.notificationId }"><c:out
-										value="${ notification.notificationId }" /></a></td>
-							<td><a
-								href="${pageContext.request.contextPath }/notification?notificationId=${ notification.notificationId }"><c:out
-										value="${ notification.notificationTitle }" /></a></td>
-							<td><c:out value="관리자" /></td>
-							<td><c:out value="${ notification.notificationDate }" /></td>
-						</tr>
+							<tr>
+								<td><a
+									href="${pageContext.request.contextPath }/notification?notificationId=${ notification.notificationId }"><c:out
+											value="${ notification.notificationId }" /></a></td>
+								<td><a
+									href="${pageContext.request.contextPath }/notification?notificationId=${ notification.notificationId }"><c:out
+											value="${ notification.notificationTitle }" /></a></td>
+								<td><c:out value="관리자" /></td>
+								<td><c:out value="${ notification.notificationDate }" /></td>
+							</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			<hr />
 			<div class="row">
 				<div class="container">
 					<div class="float-right">
@@ -59,13 +60,13 @@
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
 				</form>
 				<ul class="pagination justify-content-center">
-					<li class="page-item disabled"><a class="page-link">&laquo;</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">4</a></li>
-					<li class="page-item"><a class="page-link" href="#">5</a></li>
-					<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/notificationList?currentPage=1">&laquo;</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/notificationList?currentPage=${ currentPage -10 }">&lt;</a></li>
+					<c:forEach begin="${ currentTabStart }" end="${ currentTabEnd }" step="1" varStatus="stauts">
+						<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/notificationList?currentPage=${ stauts.index}">${ stauts.index }</a></li>
+					</c:forEach>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/notificationList?currentPage=${ currentPage +10 }">&gt;</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/notificationList?currentPage=${ totalPage }">&raquo;</a></li>
 				</ul>
 			</nav>
 		</div>

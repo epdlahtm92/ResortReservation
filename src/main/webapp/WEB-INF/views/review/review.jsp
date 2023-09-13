@@ -33,7 +33,7 @@
 					<c:if test="${ not empty reviewById.reviewImagePath }">
 						<img
 							style="margin-bottom: 50px; margin: auto; display: block; width: 75%;"
-							src="${ pageContext.request.contextPath }/resources/imageFiles/${ reviewById.reviewImagePath }"
+							src="/home/kopo17/upload/${ reviewById.reviewImagePath }"
 							alt="사진 없음" />
 					</c:if>
 				</div>

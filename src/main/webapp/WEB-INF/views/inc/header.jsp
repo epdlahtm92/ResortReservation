@@ -78,9 +78,9 @@
 					data-toggle="dropdown" aria-expanded="false"> 리조트 소식 </a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item"
-							href="${ pageContext.request.contextPath }/notificationList">공지
+							href="${ pageContext.request.contextPath }/notificationList?currentPage=1">공지
 							사항</a> <a class="dropdown-item"
-							href="${ pageContext.request.contextPath }/reviewList">이용 후기</a>
+							href="${ pageContext.request.contextPath }/reviewList?currentPage=1">이용 후기</a>
 					</div></li>
 			</ul>
 			<c:if test="${ logInError eq 'true' }">

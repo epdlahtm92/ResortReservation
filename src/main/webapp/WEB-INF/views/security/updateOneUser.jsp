@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,24 +13,25 @@
 <script
 	src="${pageContext.request.contextPath }/resources/javaScriptFiles/trimSpace.js"></script>
 <meta charset="UTF-8">
-<title>회원 가입 하기</title>
+<title>공지사항 작성</title>
 </head>
 <body>
 	<%@ include file="../inc/header.jsp"%>
-	<c:if test="${ passwordAlert }"><script>alert("비밀번호가 다릅니다.")</script></c:if>
+
+	<c:if test="${ passwordAlert }">
+		<script>
+			alert("비밀번호가 다릅니다.")
+		</script>
+	</c:if>
 	<div class="row">
-		<div class="container">
-			<form:form modelAttribute="newRegistration" class="form-horizontal"
+		<div class="container" style="margin-top: 25px;">
+			<form:form modelAttribute="updateOneUser" class="form-horizontal"
 				method="POST">
 				<fieldset>
-					<legend style="text-align: center;">회원 가입</legend>
+					<legend style="text-align: center;">회원 정보 수정</legend>
+					<hr />
 					<div class="form-group-row">
-						<label class="col-sm-2 control-label">아이디</label>
-						<div class="col -sm-3">
-							<form:input path="username" class="form-control" placeholder="아이디를 입력하세요"
-								oninput="trimSpace(this)" type="text" pattern=".{8,14}"
-								title="8~14 글자 내로 입력해주세요" maxlength="14" required="true" />
-						</div>
+						<label class="col-sm-2 control-label">아이디 : ${updateOneUser.username }</label>
 					</div>
 					<div class="form-group-row">
 						<label class="col-sm-2 control-label">실명</label>
@@ -41,28 +41,42 @@
 								title="2~14 글자 내로 입력해주세요" maxlength="14" required="true" />
 						</div>
 					</div>
+					<c:if test="${ isAdmin }">
+						<div class="form-group-row">
+							<label class="col-sm-2 control-label">회원 권한</label>
+							<div class="col -sm-3">
+								<form:select path="authority" class="form-control" required="true">
+									<form:option value="ROLE_ADMIN">관리자</form:option>
+									<form:option value="ROLE_MANAGER">부관리자</form:option>
+									<form:option value="ROLE_MEMBER">일반 회원</form:option>
+								</form:select>
+							</div>
+						</div>
+					</c:if>
 					<div class="form-group-row">
 						<label class="col-sm-2 control-label">비밀번호</label>
 						<div class="col -sm-3">
 							<form:input path="password" class="form-control"
-								oninput="trimSpace(this);" type="password" pattern=".{8,12}" placeholder="비밀번호를 입력하세요"
-								title="8~12 글자 내로 입력해주세요" maxlength="12" required="true" />
+								oninput="trimSpace(this);" type="password" pattern=".{8,12}"
+								placeholder="비밀번호를 입력하세요" title="8~12 글자 내로 입력해주세요"
+								maxlength="12" required="true" />
 						</div>
 					</div>
 					<div class="form-group-row">
 						<label class="col-sm-2 control-label">비밀번호 확인</label>
 						<div class="col -sm-3">
-							<form:input path="confirmPassword" class="form-control" placeholder="비밀번호를 확인해주세요"
-								oninput="trimSpace(this);" type="password" pattern=".{8,12}"
-								title="8~12 글자 내로 입력해주세요" maxlength="12" required="true" />
+							<form:input path="confirmPassword" class="form-control"
+								placeholder="비밀번호를 확인해주세요" oninput="trimSpace(this);"
+								type="password" pattern=".{8,12}" title="8~12 글자 내로 입력해주세요"
+								maxlength="12" required="true" />
 						</div>
 					</div>
 					<div class="form-group-row">
 						<label class="col-sm-2 control-label">핸드폰 번호</label>
 						<div class="col -sm-3">
-							<form:input path="phoneNumber" type="text" class="form-control" placeholder="핸드폰 번호를 입력하세요"
-								oninput="oninputPhone(this)" pattern=".{11,13}" maxlength="12"
-								required="true" />
+							<form:input path="phoneNumber" type="text" class="form-control"
+								placeholder="핸드폰 번호를 입력하세요" oninput="oninputPhone(this)"
+								pattern=".{11,13}" maxlength="12" required="true" />
 						</div>
 					</div>
 					<div class="form-group-row">
@@ -71,7 +85,8 @@
 							<div class="row mx-md-n5">
 								<div class="col px-md-5">
 									<form:input path="email" class="form-control"
-										oninput="trimSpace(this)" type="text" required="true" placeholder="email을 입력하세요"/>
+										oninput="trimSpace(this)" type="text" required="true"
+										placeholder="email을 입력하세요" />
 								</div>
 								<span style="font-size: 1.5em; font-weight: bold; color: gray;">@</span>
 								<div class="col px-md-5">
@@ -90,7 +105,7 @@
 							<a href="${ pageContext.request.contextPath }"
 								class="btn btn-danger">취소</a> <input type="reset"
 								class="btn btn-warning" value="다시쓰기" /> <input type="submit"
-								class="btn btn-primary" value="가입하기" />
+								class="btn btn-primary" value="수정하기" />
 						</div>
 					</div>
 				</fieldset>
@@ -98,6 +113,7 @@
 			</form:form>
 		</div>
 	</div>
+
 	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

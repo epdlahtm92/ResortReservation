@@ -1,8 +1,8 @@
 package com.resort.controller;
 
+import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -47,26 +47,32 @@ public class SecurityController {
 
 	// Read 
 		// (logIn & logOut)
+//			@PostMapping("/preLogIn")
+//			public String requestPreLogIn(HttpServletRequest request) {
+//				String remeberId = request.getParameter("remeberId");
+//				return "redirect:/login";
+//			}
+//		
 			@GetMapping("/logInSuccess")
-			public String requestLogIn(HttpServletResponse response, HttpServletRequest request, Model model) {
+			public String requestLogIn(HttpServletResponse response, HttpServletRequest request, Model model, Principal principal) {
 				String backURL = request.getHeader("referer");
-				String logInCookie = request.getParameter("logInCookie");
-				if (logInCookie.equals("true")) {
-					Cookie cookieForLogIn = new Cookie("logInCookie", "true");
-					Cookie cookieForLogInId = new Cookie("logInIdCookie", request.getParameter("username"));
-					Cookie cookieForLogInPassword = new Cookie("logInPasswordCookie", request.getParameter("password"));
-					
-					cookieForLogIn.setMaxAge(60*60*24);
-					cookieForLogIn.setPath("/");
-					cookieForLogInId.setMaxAge(60*60*24);
-					cookieForLogInId.setPath("/");
-					cookieForLogInPassword.setMaxAge(60*60*24);
-					cookieForLogInPassword.setPath("/");
-					
-					response.addCookie(cookieForLogIn);
-					response.addCookie(cookieForLogInId);
-					response.addCookie(cookieForLogInPassword);
-				}
+//				String logInCookie = request.getParameter("logInCookie");
+//				if (logInCookie.equals("true")) {
+//					Cookie cookieForLogIn = new Cookie("logInCookie", "true");
+//					Cookie cookieForLogInId = new Cookie("logInIdCookie", request.getParameter("username"));
+//					Cookie cookieForLogInPassword = new Cookie("logInPasswordCookie", request.getParameter("password"));
+//					
+//					cookieForLogIn.setMaxAge(60*60*24);
+//					cookieForLogIn.setPath("/");
+//					cookieForLogInId.setMaxAge(60*60*24);
+//					cookieForLogInId.setPath("/");
+//					cookieForLogInPassword.setMaxAge(60*60*24);
+//					cookieForLogInPassword.setPath("/");
+//					
+//					response.addCookie(cookieForLogIn);
+//					response.addCookie(cookieForLogInId);
+//					response.addCookie(cookieForLogInPassword);
+//				}
 				
 				if (backURL.contains("newRegistration")) {
 					return "redirect:/";

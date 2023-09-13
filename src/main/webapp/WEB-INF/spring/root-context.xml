@@ -17,10 +17,10 @@
 	 <bean id="csrfSecurityRequestMatcher" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 		
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.23.66:1521:xe"></property>
-		<property name="username" value="resort"></property>
-		<property name="password" value="kopo1717"></property>
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.23.66:1521:xe" />
+		<property name="username" value="resort" />
+		<property name="password" value="kopo1717" />
 	</bean>
 
 	<!-- HikariCP configuration -->
@@ -30,10 +30,10 @@
 	</bean>
 
 	<bean id="sqlsessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<context:component-scan base-package="com.resort.sample"></context:component-scan>
+	<context:component-scan base-package="com.resort.sample" />
 		
 	<mybatis-spring:scan base-package="com.resort.mapper"/>
 	

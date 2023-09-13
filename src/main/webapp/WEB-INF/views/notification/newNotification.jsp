@@ -46,13 +46,15 @@
 				<hr/>
 				<div class="float-right" style="margin-top: 25px;">
 					<div class="col -sm-offset-2 col -sm-10">
+						<a class="btn btn-danger" href="${ pageContext.request.contextPath }/notificationList">돌아가기</a>
 						<input type="reset" class="btn btn-warning" value="다시쓰기" /> <input
 							type="submit" class="btn btn-primary" value="확인" />
 					</div>
 				</div>
 			</fieldset>
 		</form:form>
-		<%@ include file="../inc/footer.jsp"%>
 	</div>
+	
+	<%@ include file="../inc/footer.jsp"%>
 </body>
 </html>

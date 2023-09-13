@@ -1,6 +1,7 @@
 package com.resort.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +29,7 @@ public class ReviewController {
 
 	private List<Review> listOfReview;
 	private List<Reply> listOfReply;
-	private String imageDirectory = "C:\\03StringWorkspace\\ResortReservation\\src\\main\\webapp\\resources\\imageFiles\\";
+	private String imageDirectory = "/home/kopo17/upload/";
 
 	// Create
 	@GetMapping("/newReview")
@@ -70,8 +71,41 @@ public class ReviewController {
 
 	// Read
 	@GetMapping("/reviewList")
-	public String requestReviewList(Model model) {
+	public String requestReviewList(@RequestParam("currentPage") int currentPage, Model model) {
+		int pageCnt = 10;
 		listOfReview = reviewService.readAllReview();
+		List<List<Review>> pagesOfReview = new ArrayList<List<Review>>();
+		
+		for (int i = 0; i < listOfReview.size(); i = i + pageCnt) {
+			List<Review> reviewPerPage = new ArrayList<Review>();
+			for (int j = i; j < i + pageCnt; j++) {
+				try {
+					reviewPerPage.add(listOfReview.get(j));
+				} catch (IndexOutOfBoundsException ie) {
+					break;
+				}
+			}
+			pagesOfReview.add(reviewPerPage);
+		}
+		if (currentPage < 1) {
+			currentPage = 1;
+		}
+		if (currentPage > pagesOfReview.size()) {
+			currentPage = pagesOfReview.size();
+		}
+		
+		int currentTabStart = (currentPage / 10)*10 + 1;
+		int currentTabEnd = currentTabStart + 9;
+		
+		if (currentTabEnd > pagesOfReview.size()) {
+			currentTabEnd = pagesOfReview.size(); 
+		}
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("currentTabStart", currentTabStart);
+		model.addAttribute("currentTabEnd", currentTabEnd);
+		model.addAttribute("totalPage", pagesOfReview.size());
+		model.addAttribute("notificationList", pagesOfReview.get(currentPage -1));
+		
 		model.addAttribute("reviewList", listOfReview);
 
 		return "review/reviewList";

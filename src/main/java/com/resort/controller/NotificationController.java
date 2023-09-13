@@ -1,6 +1,7 @@
 package com.resort.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +23,7 @@ public class NotificationController {
 	private Service.NotificationService notificationSerivce;
 	
 	private List<Notification> listofNotification;
-	private String imageDirectory = "C:\\03StringWorkspace\\ResortReservation\\src\\main\\webapp\\resources\\imageFiles\\";
+	private String imageDirectory = "/home/kopo17/upload/";
 	
 	// Create
 		@GetMapping("/newNotification")
@@ -59,11 +60,40 @@ public class NotificationController {
 	
 	// Read
 		@GetMapping("/notificationList")
-		public String requestNotificationList(Model model) {
-			
+		public String requestNotificationList(@RequestParam("currentPage") int currentPage, Model model) {
+			int pageCnt = 10;
 			listofNotification = notificationSerivce.readAllNotification();
+			List<List<Notification>> pagesOfNotification = new ArrayList<List<Notification>>();
 			
-			model.addAttribute("notificationList", listofNotification);
+			for (int i = 0; i <listofNotification.size(); i = i+pageCnt) {
+				List<Notification> notificationPerPage = new ArrayList<Notification>();
+				for (int j = i; j < i + pageCnt; j++) {
+					try {
+						notificationPerPage.add(listofNotification.get(j));
+					} catch (IndexOutOfBoundsException ie) {
+						break;
+					}
+				}
+				pagesOfNotification.add(notificationPerPage);
+			}
+			if (currentPage < 1) {
+				currentPage = 1;
+			}
+			if (currentPage > pagesOfNotification.size()) {
+				currentPage = pagesOfNotification.size();
+			}
+			
+			int currentTabStart = (currentPage / 10)*10 + 1;
+			int currentTabEnd = currentTabStart + 9;
+			
+			if (currentTabEnd > pagesOfNotification.size()) {
+				currentTabEnd = pagesOfNotification.size(); 
+			}
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("currentTabStart", currentTabStart);
+			model.addAttribute("currentTabEnd", currentTabEnd);
+			model.addAttribute("totalPage", pagesOfNotification.size());
+			model.addAttribute("notificationList", pagesOfNotification.get(currentPage -1));
 			
 			return "notification/notificationList";
 		}
